@@ -1,0 +1,27 @@
+/* === RESETS === */
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: arial;
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    font-size: 1.6rem;
+    background-color: var(--light-gray);
+}
+ul,ol{
+    list-style: none;
+}
+input,textarea,button{
+    border: none;
+    outline: none;
+    overflow: hidden;
+}
+:root{
+    --primary-color: #fff;
+    --secondary-color: #000;
+    --light-gray: #d3d3d3;
+}
