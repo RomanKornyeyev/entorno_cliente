@@ -12,6 +12,9 @@ body{
     font-size: 1.6rem;
     background-color: var(--light-gray);
 }
+a{
+    text-decoration: none;
+}
 ul,ol{
     list-style: none;
 }
