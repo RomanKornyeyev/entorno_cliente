@@ -4,7 +4,7 @@ let nombre = "Roman Kr";
 let edad = 12;
 let info = ["Román", "Kornyeyev", "26 años"];
 
-
+//hace falta poner las comillas cutres para poder poner así las variables
 contenido.innerHTML = `<h2>${nombre}</h2>`;
 contenido.innerHTML += `<h2>${edad}</h2>`;
 
