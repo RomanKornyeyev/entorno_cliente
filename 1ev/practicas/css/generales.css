@@ -10,7 +10,7 @@ html{
 }
 body{
     font-size: 1.6rem;
-    background-color: var(--eaeaea);
+    background-color: var(--strong-gray-1);
 }
 a{
     text-decoration: none;
@@ -24,12 +24,13 @@ input,textarea,button{
     overflow: hidden;
 }
 :root{
-    --eaeaea: #eaeaea;
-    --almost-white: #d9d9d9;
-    --light-grey: #a7a7a7;
-    --very-light-grey: #606060;
-    --grey: #808080;
-    --primary: #fff;
+    --strong-gray-1: #1D1D1D;
+    --strong-gray-2: #2B2B2B;
+    --gray: #808080;
+    --light-gray-1: #b1b1b1;
+    --light-gray-2: #c4c4c4;
+    --almost-white: #d3d3d3;
+    --primary: #08FDD8;
     --secondary: #000;
     --error: #ffc400;
 }
@@ -41,6 +42,7 @@ input,textarea,button{
 }
 .w-100{ width: 100%;}
 .limit-width-120{max-width: 120rem;}
+.limit-width-75{max-width: 75rem;}
 .limit-width-50{max-width: 50rem;}
 .button{
     display: block;
@@ -49,11 +51,11 @@ input,textarea,button{
     height: 4rem;
     border: none;
     background-color: transparent;
-    color: var(--secondary);
+    color: var(--primary);
     cursor: pointer;
     overflow: hidden;
     font-size: 1.6rem;
-    border: 1px solid var(--secondary);
+    border: 1px solid var(--primary);
 }
 .button::after{
     content: '';
@@ -63,7 +65,7 @@ input,textarea,button{
     bottom:0;
     right:0;
     z-index: -1;
-    background-color: var(--secondary);
+    background-color: var(--primary);
     transition: transform 250ms ease-out;
     transform: scaleX(0);
     transform-origin:left;
@@ -78,7 +80,7 @@ input,textarea,button{
 }
 .button:hover,
 .button:focus{
-    color: var(--primary);
+    color: var(--secondary);
 }
 
 .form-ul{
@@ -97,11 +99,11 @@ input,textarea,button{
 .input{
     height: 4rem;
     font-size: 1.6rem;
-    background-color: var(--light-grey);
+    background-color: var(--strong-gray-2);
     color: var(--almost-white);
 }
 .input::placeholder{
-    color: var(--very-light-grey);
+    color: var(--light-gray-1);
 }
 .label-lane{
     content: '';
@@ -110,7 +112,7 @@ input,textarea,button{
     height: .3rem;
     bottom: 0;
     left: -100%;
-    background-color: var(--secondary);
+    background-color: var(--primary);
     transition: left 250ms ease-out;
 }
 .input:focus~.label-lane{

@@ -8,27 +8,51 @@
     <link rel="stylesheet" href="css/generales.css">
     <link rel="stylesheet" href="css/1-formulario.css">
     <!-- JS -->
-    <script src="js/1-formulario.js" defer></script>
+    <script src="js/1-formulario.js" defer=""></script>
     <link rel="icon" type="image/icon" href="img/html5.ico">
     <title>Index</title>
 </head>
 <body>
     <div class="container w-100 limit-width-120" id="container">
-        <div class="entrada-datos w-100 limit-width-50">
-            <ul class="form-ul">
-                <li class="form-ul-li">
-                    <input class="input input-text" type="text" id="nombre1" placeholder="Introduce tu NOMBRE">
-                    <label class="label-lane" for="nombre"></label> 
-                </li>
-                <li class="form-ul-li">
-                    <input class="input input-text" type="text" id="email1" placeholder="Introduce tu EMAIL">
-                    <label class="label-lane" for="email"></label> 
-                </li>
-            </ul>
-
-            <button id="boton1" class="button" onclick="ejercicio1()">GENERAR</button>
+        <!-- Ejercicio 1 -->
+        <div class="card w-100 limit-width-50">
+            <div class="card-header">
+                1. Confeccionar un programa que permita cargar el nombre de un usuario y su mail por teclado. Mostrar posteriormente los datos en la página HTML.
+            </div>
+            <div class="card-body">
+                <ul class="form-ul">
+                    <li class="form-ul-li">
+                        <input class="input input-text" type="text" id="nombre1" placeholder="Introduce tu NOMBRE">
+                        <label class="label-lane" for="nombre"></label> 
+                    </li>
+                    <li class="form-ul-li">
+                        <input class="input input-text" type="text" id="email1" placeholder="Introduce tu EMAIL">
+                        <label class="label-lane" for="email"></label> 
+                    </li>
+                </ul>
+                
+                <button id="boton1" class="button" onclick="ejercicio1()">ESCRIBIR</button>
+                <p class="resultados w-100" id="resultados1"></p>
+            </div>
         </div>
-        <p id="resultados1"></p>
+
+        <!-- Ejercicio 2 -->
+        <div class="card w-100 limit-width-50">
+            <div class="card-header">
+                2. Realizar la carga del radio de una circunferencia, mostrar por pantalla el área de este.
+            </div>
+            <div class="card-body">
+                <ul class="form-ul">
+                    <li class="form-ul-li">
+                        <input class="input input-text" type="text" id="radio2" placeholder="Introduce el RADIO">
+                        <label class="label-lane" for="nombre"></label> 
+                    </li>
+                </ul>
+
+                <button id="boton2" class="button" onclick="ejercicio2()">CALCULAR</button>
+                <p class="resultados w-100" id="resultados2"></p>
+            </div>
+        </div>
     </div>
 </body>
 </html>
