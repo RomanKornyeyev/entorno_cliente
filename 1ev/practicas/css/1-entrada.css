@@ -6,6 +6,7 @@
     flex-flow: column;
     gap: 5rem;
     margin: 0 auto;
+    padding: 2rem;
 }
 .card-header{
     padding: 2rem;

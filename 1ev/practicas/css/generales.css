@@ -4,6 +4,7 @@
     padding:0;
     box-sizing: border-box;
     font-family: arial;
+    scroll-behavior: smooth;
 }
 html{
     font-size: 62.5%;
@@ -44,6 +45,7 @@ input,textarea,button{
 .limit-width-120{max-width: 120rem;}
 .limit-width-75{max-width: 75rem;}
 .limit-width-50{max-width: 50rem;}
+/* === BOTONES E INPUTS === */
 .button{
     display: block;
     position: relative;
