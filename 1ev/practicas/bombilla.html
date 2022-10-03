@@ -6,17 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS -->
     <link rel="stylesheet" href="css/generales.css">
+    <link rel="stylesheet" href="css/bombilla.css">
     <!-- JS -->
-    <script src="js/scripts.js" defer></script>
+    <script src="js/bombilla.js" defer></script>
     <link rel="icon" type="image/icon" href="img/html5.ico">
     <title>Index</title>
 </head>
 <body>
-    <header class="header"></header>
-    <div class="container">
-        <div id="contenido"></div>
+    <div class="container" id="container">
+        <div class="bombilla" id="bombilla"></div>
+        <div class="w-100 grid-2">
+            <button class="button" onclick="encender()">Encender</button>
+            <button class="button" onclick="apagar()">Apagar</button>
+        </div>
     </div>
-    <footer class="footer"></footer>
-    
 </body>
 </html>

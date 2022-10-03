@@ -1,0 +1,78 @@
+/* === RESETS === */
+*, *::before, *::after{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: arial;
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    font-size: 1.6rem;
+    background-color: var(--light-gray);
+}
+a{
+    text-decoration: none;
+}
+ul,ol{
+    list-style: none;
+}
+input,textarea,button{
+    border: none;
+    outline: none;
+    overflow: hidden;
+}
+:root{
+    --light-gray: #eaeaea;
+    --light-grey: #a7a7a7;
+    --grey: #808080;
+    --primary: #fff;
+    --secondary: #000;
+    --error: #ffc400;
+}
+/* === UTILIDADES === */
+.grid-2{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+.w-100{ width: 100%;}
+.button{
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 4rem;
+    border: none;
+    background-color: var(--primary);
+    color: var(--secondary);
+    cursor: pointer;
+    overflow: hidden;
+    font-size: 1.6rem;
+    border: 1px solid var(--secondary);
+}
+.button::after{
+    content: '';
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    z-index: -1;
+    background-color: var(--secondary);
+    transition: transform 250ms ease-out;
+    transform: scaleX(0);
+    transform-origin:left;
+}
+.button:hover::after,
+.button:focus::after{
+    transform: scaleX(1);
+}
+.button{
+    transition: color 250ms ease-out;
+    z-index: 1;
+}
+.button:hover,
+.button:focus{
+    color: var(--primary);
+}

@@ -1,0 +1,26 @@
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    gap: 5rem;
+    min-height: 100vh;
+    width: 90%;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+.bombilla{
+    width: 50rem;
+    height: 50rem;
+    background-image: url('../img/bombilla_apagada.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.form{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+.encendida{background-color: yellow;}
