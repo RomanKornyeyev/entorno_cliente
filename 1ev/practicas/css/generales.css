@@ -25,6 +25,7 @@ input,textarea,button{
     overflow: hidden;
 }
 :root{
+    --almost-black: #0f0f0f;
     --strong-gray-1: #1D1D1D;
     --strong-gray-2: #2B2B2B;
     --gray: #808080;
@@ -83,6 +84,25 @@ input,textarea,button{
 .button:hover,
 .button:focus{
     color: var(--secondary);
+}
+.button-2{
+    display: block;
+    width: 100%;
+    height: 4rem;
+    line-height: 4rem;
+    text-align: center;
+    border: none;
+    background-color: transparent;
+    color: var(--almost-white);
+    cursor: pointer;
+    overflow: hidden;
+    font-size: 1.6rem;
+    border: 1px solid var(--gray);
+    border-left: none;
+    transition: color 300ms ease-out;
+}
+.button-2:hover{
+    color: var(--primary);
 }
 
 .form-ul{
