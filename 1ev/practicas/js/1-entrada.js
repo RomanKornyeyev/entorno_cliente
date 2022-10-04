@@ -44,3 +44,19 @@ function ejercicio3 (){
 }
 
 //Ejercicio 4
+let lado4 = document.getElementById("lado4");
+let resultados4 = document.getElementById("resultados4");
+
+function ejercicio4 () {
+    if(lado4.value) resultados4.innerHTML=`El perímetro es: ${(lado4.value * lado4.value).toFixed(2)}² metros`; //con redondeo a 2 decimales
+    else resultados4.innerHTML = `Rellena el campo`;
+}
+
+//Ejercicio 5
+let precio5 = document.getElementById("precio5");
+let cantidad5 = document.getElementById("cantidad5");
+
+function ejercicio5(){
+    if(precio5.value && cantidad5.value) resultados5.innerHTML = `TOTAL: ${precio5.value * cantidad5.value}`;
+    else resultados5.innerHTML = `Rellena los campos`;
+}
