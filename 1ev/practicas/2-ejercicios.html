@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/generales.css">
+    <link rel="stylesheet" href="css/1-entrada.css">
+    <!-- JS -->
+    <script src="js/scrollreveal.js"></script>
+    <script src="js/sr-1.js" defer></script>
+    <script src="js/2-ejercicios.js" defer></script>
+    <link rel="icon" type="image/icon" href="img/html5.ico">
+    <title>Ejercicios 2</title>
+</head>
+<body>
+    <nav class="side-nav">
+        <a class="button-2" href="#ej1">Ejercicio 1</a>
+        <a class="button-2" href="#ej2">Ejercicio 2</a>
+        <a class="button-2" href="#ej3">Ejercicio 3</a>
+        <a class="button-2" href="#ej4">Ejercicio 4</a>
+        <a class="button-2" href="#ej5">Ejercicio 5</a>
+    </nav>
+    <main class="container w-100 limit-width-120">
+        <!-- Ejercicio 1 -->
+        <div class="card w-100 limit-width-50 to-left-1250" id="ej1">
+            <div class="card-header">
+                1. Pedir tres números y mostrarlos ordenados de mayor a menor.
+            </div>
+            <div class="card-body">
+                <ul class="form-ul">
+                    <li class="form-ul-li">
+                        <input class="input input-text" type="number" id="num1-1" placeholder="Introduce el 1er número">
+                        <label class="label-lane" for="num1-1"></label> 
+                    </li>
+                    <li class="form-ul-li">
+                        <input class="input input-text" type="number" id="num1-2" placeholder="Introduce el 2do número">
+                        <label class="label-lane" for="num1-2"></label> 
+                    </li>
+                    <li class="form-ul-li">
+                        <input class="input input-text" type="number" id="num1-3" placeholder="Introduce el 3er número">
+                        <label class="label-lane" for="num1-3"></label> 
+                    </li>
+                </ul>
+                
+                <button id="boton1" class="button">ORDENAR</button>
+                <p class="resultados w-100" id="resultados1"></p>
+            </div>
+        </div>
+
+        <!-- Ejercicio 2 -->
+        <div class="card w-100 limit-width-50 to-left-1250" id="ej2">
+            <div class="card-header">
+                2. Pedir un número entre 0 y 9999 y decir cuantas cifras tiene.
+            </div>
+            <div class="card-body">
+                <ul class="form-ul">
+                    <li class="form-ul-li">
+                        <input class="input input-text" type="number" id="ej2_num1" placeholder="Introduce un número (0-9999)"  min="0" max="9999" pattern="[0-9]{4}">
+                        <label class="label-lane" for="ej2-num1"></label> 
+                    </li>
+                </ul>
+                
+                <button id="boton2" class="button">AVERIGUAR</button>
+                <p class="resultados w-100" id="resultados2"></p>
+            </div>
+        </div>
+
+        <!-- Ejercicio 3 -->
+        <div class="card w-100 limit-width-50 to-left-1250" id="ej3">
+            <div class="card-header">
+                3. Pedir un número entre 0 y 9999 y mostrarlo con las cifras al revés.
+            </div>
+            <div class="card-body">
+                <ul class="form-ul">
+                    <li class="form-ul-li">
+                        <input class="input input-text" type="number" id="ej3_num1" placeholder="Introduce un número (0-9999)"  min="0" max="9999" pattern="[0-9]{4}">
+                        <label class="label-lane" for="ej3-num1"></label> 
+                    </li>
+                </ul>
+                
+                <button id="boton3" class="button">REORDENAR</button>
+                <p id="resultados3" class="resultados w-100"></p>
+            </div>
+        </div>
+
+        <!-- Ejercicio 4 -->
+        <div class="card w-100 limit-width-50 to-left-1250" id="ej4">
+            <div class="card-header">
+                4. Pedir un número entre 0 y 9999 y decir si es capicúa.
+            </div>
+            <div class="card-body">
+                <ul class="form-ul">
+                    <li class="form-ul-li">
+                        <input class="input input-text" type="number" id="ej4_num" placeholder="Introduce un número (0-9999)"  min="0" max="9999" pattern="[0-9]{4}">
+                        <label class="label-lane" for="ej4-num"></label> 
+                    </li>
+                </ul>
+                
+                <button id="boton4" class="button">DESCUBRIR</button>
+                <p id="resultados4" class="resultados w-100"></p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
