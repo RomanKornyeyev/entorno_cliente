@@ -61,7 +61,7 @@ function ejercicio4 (){
         let cadena = ej4_num.value.toString();
         let invertido1 = "";
         for (let i = cadena.length; i > 0; i--) { //recorro el string desde el final hasta el inicio
-            invertido1 += cadena.substring(i, i-1);
+            invertido1 += cadena.substring(i-1, i);
         }
         if(cadena == invertido1) resultados4.innerHTML = `Es capicúa`;
         else resultados4.innerHTML = `NO es capicúa`;
@@ -69,4 +69,13 @@ function ejercicio4 (){
 }
 
 //Ejercicio 5
+const boton5 = document.querySelector("#boton5");
+let ej5_inicial = document.querySelector("#ej5_ini");
+let ej5_final = document.querySelector("#ej5_fin");
+
+boton5 = addEventListener("click", ejercicio5);
+
+function ejercicio5 (){
+
+}
 

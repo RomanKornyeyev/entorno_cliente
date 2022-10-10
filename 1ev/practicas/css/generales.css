@@ -19,7 +19,7 @@ a{
 ul,ol{
     list-style: none;
 }
-input,textarea,button{
+input,textarea,button,select{
     border: none;
     outline: none;
     overflow: hidden;
@@ -118,6 +118,9 @@ input,textarea,button{
     width: 100%;
     overflow: hidden;
 }
+.label{
+    color: var(--almost-white);
+}
 .input{
     height: 4rem;
     font-size: 1.6rem;
@@ -142,5 +145,12 @@ input,textarea,button{
 }
 .input-text{
     padding: 1rem;
+    width: 100%;
+}
+.seleccion{
+    height: 4rem;
+    font-size: 1.6rem;
+    background-color: var(--strong-gray-2);
+    color: var(--almost-white);
     width: 100%;
 }

@@ -94,12 +94,39 @@
                 <ul class="form-ul">
                     <li class="form-ul-li">
                         <input class="input input-text" type="number" id="ej4_num" placeholder="Introduce un número (0-9999)"  min="0" max="9999" pattern="[0-9]{4}">
-                        <label class="label-lane" for="ej4-num"></label> 
+                        <label class="label-lane" for="ej4_num"></label> 
                     </li>
                 </ul>
                 
                 <button id="boton4" class="button">DESCUBRIR</button>
                 <p id="resultados4" class="resultados w-100"></p>
+            </div>
+        </div>
+
+        <!-- Ejercicio 5 -->
+        <div class="card w-100 limit-width-50 to-left-1250" id="ej5">
+            <div class="card-header">
+                5. Hacer una página web que permita imprimir una tabla de conversión de grados F a C y viceversa. Se debe preguntar por el tipo de conversión (C o F) y el valor de partida y el valor final. El número de entradas en la tabla deberá ser siempre de 10,por lo que el intervalo se tendrá que ajustar en función de los valores introducidos. Se mostrará en el navegador por medio de document.write.
+            </div>
+            <div class="card-body">
+                <ul class="form-ul">
+                    <label for="ej5_opc" class="label">¿A qué deseas convertir?</label>
+                    <select id="ej5_opc" class="seleccion">
+                        <option value="1" selected="selected">Celsius</option>
+                        <option value="2">Fahrenheit</option>
+                    </select>
+                    <li class="form-ul-li">
+                        <input class="input input-text" type="number" id="ej5_ini" placeholder="Valor INICIAL"  min="0" max="9999" pattern="[0-9]{4}">
+                        <label class="label-lane" for="ej5_ini"></label> 
+                    </li>
+                    <li class="form-ul-li">
+                        <input class="input input-text" type="number" id="ej5_fin" placeholder="Valor FINAL"  min="0" max="9999" pattern="[0-9]{4}">
+                        <label class="label-lane" for="ej5_fin"></label> 
+                    </li>
+                </ul>
+                
+                <button id="boton5" class="button">GENERAR</button>
+                <p id="resultados5" class="resultados w-100"></p>
             </div>
         </div>
     </main>
