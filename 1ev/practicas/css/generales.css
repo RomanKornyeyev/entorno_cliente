@@ -24,6 +24,10 @@ input,textarea,button,select{
     outline: none;
     overflow: hidden;
 }
+table, tr, td{
+    border: none;
+    border-collapse: collapse;
+}
 :root{
     --almost-black: #0f0f0f;
     --strong-gray-1: #1D1D1D;
@@ -153,4 +157,8 @@ input,textarea,button,select{
     background-color: var(--strong-gray-2);
     color: var(--almost-white);
     width: 100%;
+}
+/* === TABLAS === */
+td{
+    padding: 0 2rem;
 }

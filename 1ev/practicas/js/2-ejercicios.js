@@ -72,10 +72,40 @@ function ejercicio4 (){
 const boton5 = document.querySelector("#boton5");
 let ej5_inicial = document.querySelector("#ej5_ini");
 let ej5_final = document.querySelector("#ej5_fin");
+let resultados5 = document.querySelector("#resultados5");
+let tabla5 = document.querySelector("#tabla5");
 
-boton5 = addEventListener("click", ejercicio5);
+let e = document.querySelector("#ej5_opc");
+let valor5 = e.value;
+let texto5 = e.options[e.selectedIndex].text;
+
+function onChange5() {
+    valor5 = e.value;
+    texto5 = e.options[e.selectedIndex].text;
+    console.log(valor5, texto5);
+}
+onChange5(); // ejecutamos la función para que cargue el valor inicial por defecto (celsius)
+e.onchange = onChange5; // cada vez que se cambie se actualiza
+
+boton5.addEventListener("click", ejercicio5);
 
 function ejercicio5 (){
-
+    if(ej5_inicial.value && ej5_final.value){
+        let v_inicial5 = parseInt(ej5_inicial.value);
+        let v_final5 = parseInt(ej5_final.value);
+        let rango5;
+        let proporcion5;
+        tabla5.innerHTML = ``; //limpieza
+        if(valor5 == 1){ //si es celsius
+            rango5 = v_final5 - v_inicial5;
+            proporcion5 = rango5 / 9; //sacamos la proporción truncada a 2 decimales
+            tabla5.innerHTML += `<tr><td>Posición</td><td>Celsius</td><td>Fahrenheit</td></tr>`;
+            for(let i = 0; i < 10; i++){
+                tabla5.innerHTML += `<tr><td>${i+1}</td><td>${(v_inicial5+(proporcion5*i)).toFixed(2)}</td><td>${(((v_inicial5+(proporcion5*i))*9/5)+32).toFixed(2)}</td></tr>`;
+            }
+        }else{ //si es fahrenheit
+            
+        }
+    }else resultados5.innerHTML = `Rellena todos los campos`;
 }
 
