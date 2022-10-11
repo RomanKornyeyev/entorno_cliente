@@ -162,3 +162,12 @@ table, tr, td{
 td{
     padding: 0 2rem;
 }
+/* === ANIMACIONES Y EFECTOS === */
+.box-shadow-1{
+    animation: sombra-1 1s ease-out forwards;
+}
+@keyframes sombra-1 {
+    0%{box-shadow: none;}
+    50%{box-shadow: 1px 0px 24px 11px rgba(255,255,255,0.74);}
+    100%{box-shadow: none;}
+}
