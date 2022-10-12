@@ -1,8 +1,10 @@
-let boton = document.querySelector(".button-nav");
+// let botones = document.querySelectorAll(".button-nav");
 
-boton.addEventListener("click", prueba);
+// for(let i = 0; i < botones.length; i++){
+//     botones[i].addEventListener("click", sombrear(i));
+// }
 
-function prueba(){
-    document.querySelector(".card").classList.remove("box-shadow-1");
-    document.querySelector(".card").classList.add("box-shadow-1");
+function sombrear(pos){
+    document.querySelector(`#ej${pos}`).classList.remove("box-shadow-1");
+    document.querySelector(`#ej${pos}`).classList.add("box-shadow-1");
 }
