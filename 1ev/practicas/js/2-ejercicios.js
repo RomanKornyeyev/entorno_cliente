@@ -107,3 +107,42 @@ function ejercicio5 (){
     }else tabla5.innerHTML = `Rellena todos los campos`;
 }
 
+//Ejercicio 6
+//MONEDA ENTRADA
+let e6_in = document.querySelector("#ej6_entrada");
+let valor6_in = e6_in.value;
+let texto6_in = e6_in.options[e6_in.selectedIndex].text;
+function onChange6_in() {
+    valor6_in = e6_in.value;
+    texto6_in = e6_in.options[e6_in.selectedIndex].text;
+    console.log(valor6_in, texto6_in);
+}
+onChange6_in(); 
+e6_in.onchange = onChange6_in;
+
+//MONEDA SALIDA
+let e6_out = document.querySelector("#ej6_salida");
+let valor6_out = e6_out.value;
+let texto6_out = e6_out.options[e6_out.selectedIndex].text;
+function onChange6_out() {
+    valor6_out = e6_out.value;
+    texto6_out = e6_out.options[e6_out.selectedIndex].text;
+    console.log(valor6_out, texto6_out);
+}
+onChange6_out(); 
+e6_out.onchange = onChange6_out;
+
+//INPUT Y OPERACIONES
+const boton6 = document.querySelector("#boton6");
+let ej6_num = document.querySelector("#ej6_num");
+let resultados6 = document.querySelector("#resultados6")
+
+boton6.addEventListener("click", ejercicio6);
+
+function ejercicio6 () {
+    if(ej6_num.value){
+        resultados6.innerHTML = (ej6_num.value * e6_out.value/e6_in.value).toFixed(3);
+        alert("¡Conversión completada!");
+    }
+    else resultados6.innerHTML = `Rellena todos los campos`;
+}

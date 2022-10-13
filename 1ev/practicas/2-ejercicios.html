@@ -22,6 +22,7 @@
         <a class="button-2 button-nav" href="#ej3" onclick="sombrear(3)">Ejercicio 3</a>
         <a class="button-2 button-nav" href="#ej4" onclick="sombrear(4)">Ejercicio 4</a>
         <a class="button-2 button-nav" href="#ej5" onclick="sombrear(5)">Ejercicio 5</a>
+        <a class="button-2 button-nav" href="#ej6" onclick="sombrear(6)">Ejercicio 6</a>
     </nav>
     <main class="container w-100 limit-width-120">
         <!-- Ejercicio 1 -->
@@ -134,6 +135,41 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 6 -->
+        <div class="card w-100 limit-width-50 to-left-1250" id="ej6">
+            <div class="card-header">
+                6. Hacer una página web que permita convertir un monto de dinero entre euros, dólares, libras esterlinas y yenes.
+                Debe solicitar al usuario la divisa de partida, su cantidad  y la divisa a la que convertir. Debe imprimir el resultado
+                en un mensaje de confirmación (alert). Se debe comprobar que la divisa es una de las adecuadas, que se introduce una 
+                cantidad válida (con comas para los decimales), etc.
+            </div>
+            <div class="card-body">
+                <ul class="form-ul">
+                    <label for="ej6_entrada" class="label">¿Qué deseas convertir?</label>
+                    <li class="form-ul-li form-ul-li--50">
+                        <input class="input input-text" type="number" id="ej6_num" placeholder="CANTIDAD"  min="0" max="999999">
+                        <label class="label-lane" for="ej6_ini"></label> 
+                    </li>
+                    <select id="ej6_entrada" class="seleccion seleccion--50">
+                        <option value="1" selected="selected">Euros</option>
+                        <option value="0.97">Dólares</option>
+                        <option value="0.87">Libras esterlinas</option>
+                        <option value="142.73">Yenes</option>
+                    </select>
+                    <label for="ej6_salida" class="label">¿A qué moneda?</label>
+                    <select id="ej6_salida" class="seleccion">
+                        <option value="1" class="divisa">Euros</option>
+                        <option value="0.97" class="divisa" selected="selected">Dólares</option>
+                        <option value="0.87" class="divisa">Libras esterlinas</option>
+                        <option value="142.73" class="divisa">Yenes</option>
+                    </select>
+                </ul>
+                
+                <button id="boton6" class="button">CONVERTIR</button>
+                <p id="resultados6" class="resultados w-100"></p>
             </div>
         </div>
     </main>
