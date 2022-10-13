@@ -25,9 +25,8 @@ let resultados2 = document.querySelector("#resultados2");
 boton2.addEventListener("click", ejercicio2);
 
 function ejercicio2 (){
-    if(ej2_num1.value){
-        resultados2.innerHTML = `El número tiene ${ej2_num1.value.toString().length} cifras.`
-    }else resultados2.innerHTML = `Rellena todos los campos`;
+    if(ej2_num1.value) resultados2.innerHTML = `El número tiene ${ej2_num1.value.toString().length} cifras.`
+    else resultados2.innerHTML = `Rellena todos los campos`;
 }
 
 //Ejercicio 3
@@ -135,13 +134,13 @@ e6_out.onchange = onChange6_out;
 //INPUT Y OPERACIONES
 const boton6 = document.querySelector("#boton6");
 let ej6_num = document.querySelector("#ej6_num");
-let resultados6 = document.querySelector("#resultados6")
+let resultados6 = document.querySelector("#resultados6");
 
 boton6.addEventListener("click", ejercicio6);
 
 function ejercicio6 () {
     if(ej6_num.value){
-        resultados6.innerHTML = (ej6_num.value * e6_out.value/e6_in.value).toFixed(3);
+        resultados6.innerHTML = `${(ej6_num.value * e6_out.value/e6_in.value).toFixed(3)} ${texto6_out}`;
         alert("¡Conversión completada!");
     }
     else resultados6.innerHTML = `Rellena todos los campos`;
