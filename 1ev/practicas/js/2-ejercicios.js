@@ -141,7 +141,7 @@ boton6.addEventListener("click", ejercicio6);
 function ejercicio6 () {
     if(ej6_num.value){
         resultados6.innerHTML = `${(ej6_num.value * e6_out.value/e6_in.value).toFixed(3)} ${texto6_out}`;
-        alert("¡Conversión completada!");
+        //alert("¡Conversión completada!");
     }
     else resultados6.innerHTML = `Rellena todos los campos`;
 }
