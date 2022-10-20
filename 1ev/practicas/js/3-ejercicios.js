@@ -2,6 +2,7 @@
 const boton1 = document.querySelector("#boton1");
 let base1 = document.querySelector("#num1-1");
 let altura1 = document.querySelector("#num1-2");
+let resultados1 = document.querySelector("#resultados1");
 
 boton1.addEventListener("click", ejercicio1);
 
