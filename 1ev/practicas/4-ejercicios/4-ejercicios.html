@@ -19,6 +19,7 @@
     <nav class="side-nav">
         <a class="button-2 button-nav" href="#ej1" onclick="sombrear(1)">Ejercicio 1</a>
         <a class="button-2 button-nav" href="#ej2" onclick="sombrear(2)">Ejercicio 2</a>
+        <a class="button-2 button-nav" href="#ej3" onclick="sombrear(3)">Ejercicio 3</a>
     </nav>
     <main class="container w-100 limit-width-120">
         <!-- Ejercicio 4.1 -->
@@ -41,8 +42,13 @@
                 </ul>
                 
                 <button id="boton1" class="button">CALCULAR</button>
-                <p id="resultados1" class="resultados w-100"></p>
-                
+                <div class="resultados w-100" >
+                    <table class="tabla">
+                        <tbody id="resultados1">
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -70,7 +76,7 @@
                     
                 </ul>
                 
-                <button id="boton2_1" class="button">CALCULAR</button>
+                <button id="boton2_1" class="button display-none">CALCULAR</button>
                 <div id="resultados2_1" class="resultados w-100" >
                     <table class="tabla">
                         <tbody id="tabla2_1">
@@ -78,6 +84,34 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+
+
+        <!-- Ejercicio 4.3 -->
+        <div class="card w-100 limit-width-50 to-left-1250" id="ej3">
+            <div class="card-header">
+                3. Realizar una función que reciba como argumento un array con dos elementos
+                de tipo cadena y devuelva true si en el primer elemento de la matriz se encuentran
+                todas las letras del segundo elemento de la matriz. Por ejemplo, ['javascript', 'JavaScript'] debe devolver true;
+                ['java', 'JavaScript'], false; ['JavaScript', 'java'], true.
+                <br><br>
+                Utiliza en lo posible métodos de array y funciones de cadenas.
+            </div>
+            <div class="card-body">
+                <ul class="form-ul">
+                    <li class="form-ul-li">
+                        <input class="input input-text strings" type="text" placeholder="Introduce el primer string">
+                        <label class="label-lane"></label> 
+                    </li>
+                    <li class="form-ul-li">
+                        <input class="input input-text strings" type="text" placeholder="Introduce el segundo string">
+                        <label class="label-lane"></label> 
+                    </li>
+                </ul>
+                
+                <button id="boton3" class="button">COMPROBAR</button>
+                <p id="resultados3" class="resultados w-100"></p>
             </div>
         </div>
     </main>
