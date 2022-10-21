@@ -1,4 +1,4 @@
-// Ejercicio 1
+// Ejercicio 4.1
 const boton1 = document.querySelector("#boton1");
 let base1 = document.querySelector("#num1-1");
 let altura1 = document.querySelector("#num1-2");
@@ -15,7 +15,7 @@ function ejercicio1 (){
     }else resultados1.innerHTML = `Rellena todos los campos`;
 }
 
-// Ejercicio 2
+// Ejercicio 4.2
 const boton2 = document.querySelector("#boton2");
 let numAlumn = document.querySelector("#num2");
 let alumnosInfo = document.querySelector("#alumnosInfo");
@@ -70,4 +70,4 @@ function ejercicio2_1 (){
                         <tr><td><b>MEDIA:</b></td><td>${sumaTotal/alumnos.length}</td></tr>`;   
 }
 
-//Ejercicio 3.2
+//Ejercicio 4.3
