@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/generales.css">
+    <link rel="stylesheet" href="../css/1-entrada.css">
+    <!-- JS -->
+    <script src="../js/scrollreveal.js"></script>
+    <script src="../js/sr-1.js" defer></script>
+    <script src="../js/4-ejercicios.js" defer></script>
+    <script src="../js/generales.js" defer></script>
+    <link rel="icon" type="image/icon" href="../img/html5.ico">
+    <title>Ejercicios 3</title>
+</head>
+<body>
+    <nav class="side-nav">
+        <a class="button-2 button-nav" href="#ej1" onclick="sombrear(1)">Ejercicio 1</a>
+        <a class="button-2 button-nav" href="#ej2" onclick="sombrear(2)">Ejercicio 2</a>
+    </nav>
+    <main class="container w-100 limit-width-120">
+        <!-- Ejercicio 4.1 -->
+        <div class="card w-100 limit-width-50 to-left-1250" id="ej1">
+            <div class="card-header">
+                1. Escribe una función que reciba dos números con dos decimales, que son la base y altura de un rectángulo, de
+                forma que devuelva su perímetro. Puedes elegir que la función obtenga los datos de la entrada estándar o no.
+                Indicándolo en el script.
+            </div>
+            <div class="card-body">
+                <ul class="form-ul">
+                    <li class="form-ul-li">
+                        <input class="input input-text" type="number" id="num1-1" placeholder="Introduce la base">
+                        <label class="label-lane" for="num1-1"></label> 
+                    </li>
+                    <li class="form-ul-li">
+                        <input class="input input-text" type="number" id="num1-2" placeholder="Introduce la altura">
+                        <label class="label-lane" for="num1-2"></label> 
+                    </li>
+                </ul>
+                
+                <button id="boton1" class="button">CALCULAR</button>
+                <p id="resultados1" class="resultados w-100"></p>
+            </div>
+        </div>
+
+        <!-- Ejercicio 4.2 -->
+        <div class="card w-100 limit-width-50 to-left-1250" id="ej2">
+            <div class="card-header">
+                2. Crear un script en el que se pregunte por el número de alumnos (no superior a 20, ni inferior a 8) que hay en un
+                curso, y en función de este dato, pida el nombre de los alumnos y su nota de curso. Al final, se debe mostrar, cada
+                alumno con su nota y después la media de todos los alumnos.
+            </div>
+            <div class="card-body">
+                <!-- INTRODUCIR NUM ALUMNOS -->
+                <ul class="form-ul">
+                    <li class="form-ul-li">
+                        <input class="input input-text" type="number" id="num2" placeholder="Introduce el numero de alumnos">
+                        <label class="label-lane"></label> 
+                    </li>
+                </ul>
+                
+                <button id="boton2" class="button">ENVIAR</button>
+                <p id="resultados2" class="resultados w-100" ></p>
+                
+                <!-- INTRODUCIR ALUMNOS -->
+                <ul id="alumnosInfo" class="form-ul">
+                    
+                </ul>
+                
+                <button id="boton2_1" class="button">CALCULAR</button>
+                <div id="resultados2_1" class="resultados w-100" >
+                    <table class="tabla">
+                        <tbody id="tabla2_1">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+         <!-- Ejercicio 3.2 -->
+         <div class="card w-100 limit-width-50 to-left-1250" id="ej2">
+            <div class="card-header">
+                Crea un script que pida muestre el número de días que quedan desde hoy hasta el fin de año. 
+                Recuerda que los meses empiezan desde el número 0.
+            </div>
+            <div class="card-body">
+                <!-- INTRODUCIR NUM ALUMNOS -->
+                <ul class="form-ul">
+                    <li class="form-ul-li">
+                        <input class="input input-text" type="number" id="num2" placeholder="Introduce el numero de alumnos">
+                        <label class="label-lane"></label> 
+                    </li>
+                </ul>
+                
+                <button id="boton2" class="button">ENVIAR</button>
+                <p id="resultados2" class="resultados w-100" ></p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
