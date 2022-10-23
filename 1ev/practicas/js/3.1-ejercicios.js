@@ -26,3 +26,27 @@ function ejercicio1(){
     }, 1000);
 }
 ejercicio1();
+
+
+//Ejer 2
+//definimos variables
+const boton2 = document.querySelector("#boton2");
+let datosPeli = document.querySelectorAll(".datos-peli");
+let resultados2 = document.querySelector("#resultados2");
+
+
+boton2.addEventListener("click", ejercicio2);
+
+
+function ejercicio2 (){
+    if(datosPeli[0].value && datosPeli[1].value && datosPeli[2].value){ 
+        let cadena = ""+datosPeli[0].value+datosPeli[1].value;
+        let longitudCadena = parseInt(cadena.length);
+        resultados2.innerHTML = `Longitud de titulo+autor introducidos: ${longitudCadena}<br>
+                                Cadena en minúsculas: ${(datosPeli[0].value+" de "+datosPeli[1].value).toLowerCase()}<br>
+                                Cadena en mayúsculas: ${(datosPeli[0].value+" de "+datosPeli[1].value).toUpperCase()}<br><br>
+                                Título: ${datosPeli[0].value}<br>
+                                Autor: ${datosPeli[1].value}<br>
+                                Año: ${datosPeli[2].value}<br>`;
+    }else resultados2.innerHTML = `Rellena todos los campos`;
+}

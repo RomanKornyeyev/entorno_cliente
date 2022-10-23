@@ -15,10 +15,11 @@
 <body>
     <nav class="side-nav">
         <a class="button-2 button-nav" href="#ej1" onclick="sombrear(1)">Ejercicio 1</a>
+        <a class="button-2 button-nav" href="#ej2" onclick="sombrear(2)">Ejercicio 2</a>
     </nav>
     <main class="container w-100 limit-width-120">
 
-         <!-- Ejercicio 3.1 -->
+         <!-- Ejercicio 1 -->
          <div class="card w-100 limit-width-50 to-left-1250" id="ej1">
             <div class="card-header">
                 1.- Crea un programa que muestre la hora actual, en diferentes formatos, según el valor que
@@ -29,14 +30,50 @@
                 b) 02:35 PM o AM
             </div>
             <div class="card-body flex card-body--row-wrap"> 
-                <label for="e1_opc" class="label">¿Qué deseas convertir?</label>
+                <label for="e1_opc" class="label">¿Qué formato de hora deseas ver?</label>
                 <select id="e1_opc" class="seleccion">
                     <option value="1" selected="selected">Simple</option>
                     <option value="2">Detallada</option>
                 </select>
-                <!-- <button id="boton1_1" class="button button--50">SIMPLE</button>              
-                <button id="boton1_2" class="button button--50">DETALLADO</button> -->
                 <p id="resultados1" class="resultados w-100"></p>
+            </div>
+        </div>
+
+        <!-- Ejercicio 2 -->
+        <div class="card w-100 limit-width-50 to-left-1250" id="ej2">
+            <div class="card-header">
+                2.-  Crea un programa que pida al usuario su título, autor de película favorita y año de estreno, y muestre:<br>
+                &nbsp;&nbsp;a)    El tamaño del ambos (título y autor), sin contar espacios.<br>
+                &nbsp;&nbsp;b)    La cadena de caracteres en minúsculas y en mayúsculas.<br>
+                &nbsp;&nbsp;c)   Que divida los datos en tres líneas, donde ponga<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;a.    Título:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;b.    Autor:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;c.     Año:
+            </div>
+            <div class="card-body">
+                <ul class="form-ul">
+                    <li class="form-ul-li">
+                        <input class="input input-text datos-peli" type="text" id="num1-1" placeholder="Introduce el título">
+                        <label class="label-lane"></label> 
+                    </li>
+                    <li class="form-ul-li">
+                        <input class="input input-text datos-peli" type="text" id="num1-2" placeholder="Introduce el autor">
+                        <label class="label-lane"></label> 
+                    </li>
+                    <li class="form-ul-li">
+                        <input class="input input-text datos-peli" type="number" id="num1-2" placeholder="Introduce el año">
+                        <label class="label-lane"></label> 
+                    </li>
+                </ul>
+                
+                <button id="boton2" class="button">ENVIAR</button>
+                <div class="resultados w-100" >
+                    <table class="tabla">
+                        <tbody id="resultados2">
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </main>
