@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/generales2.css">
+    <!-- JS -->
+    <script src="../js/3.1-ejercicios.js" defer></script>
+    <script src="../js/generales.js" defer></script>
+    <link rel="icon" type="image/icon" href="../img/html5.ico">
+    <title>Ejercicios 3</title>
+</head>
+<body>
+    <nav class="side-nav">
+        <a class="button-2 button-nav" href="#ej1" onclick="sombrear(1)">Ejercicio 1</a>
+    </nav>
+    <main class="container w-100 limit-width-120">
+
+         <!-- Ejercicio 3.1 -->
+         <div class="card w-100 limit-width-50 to-left-1250" id="ej1">
+            <div class="card-header">
+                1.- Crea un programa que muestre la hora actual, en diferentes formatos, según el valor que
+                teclee el usuario por parámetro. Ejemplo:
+                <br><br>
+                a) 14:35:07 (hora detallada con minutos y segundos)
+                <br><br>
+                b) 02:35 PM o AM
+            </div>
+            <div class="card-body flex card-body--row-wrap"> 
+                <label for="e1_opc" class="label">¿Qué deseas convertir?</label>
+                <select id="e1_opc" class="seleccion">
+                    <option value="1" selected="selected">Simple</option>
+                    <option value="2">Detallada</option>
+                </select>
+                <!-- <button id="boton1_1" class="button button--50">SIMPLE</button>              
+                <button id="boton1_2" class="button button--50">DETALLADO</button> -->
+                <p id="resultados1" class="resultados w-100"></p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
