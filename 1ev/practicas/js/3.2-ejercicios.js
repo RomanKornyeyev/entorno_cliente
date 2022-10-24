@@ -8,7 +8,7 @@ let finAnnio = new Date(annioActual, 11, 31, 23, 59, 59);
 let diaMilisegundos = 1000 * 60 * 60 * 24; 
 
 //calculamos los días restantes
-let diasRestantes = Math.ceil((finAnnio.getTime() - fechaActual.getTime()) / (diaMilisegundos));
+let diasRestantes = Math.floor((finAnnio.getTime() - fechaActual.getTime()) / (diaMilisegundos));
 
 // --- pintamos los resultados con un botón
 let resultados = document.querySelector("#resultados1");
