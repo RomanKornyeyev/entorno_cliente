@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="../../css/generales2.css">
+	<script src="../../js/generales.js"></script>
+	<script src="comunicacion.js" type="text/javascript" defer></script>
+</head>
+
+<body>
+	<nav class="side-nav">
+		<a class="button-2 button-nav" href="#ej1" onclick="sombrear(1)">Ejercicio 1</a>
+	</nav>
+	<main class="container w-100 limit-width-120">
+		<div class="card w-100 limit-width-50 to-left-1250" id="ej1">
+			<div class="card-header">
+				Realizar un programa que cree una página o ventana similar a la pantalla1. Con dos botones. El primero abrirá, una
+				ventana con la web (<strong>cualquiera que se especifique</strong>, por defecto w3schools). Controlar que, si pasados 10 segundos no se ha pulsado el botón de
+				cerrar ventana, se cierre (la que se abrió).
+			</div>
+			<div class="card-body flex card-body--row-wrap">
+				<ul class="form-ul">
+					<li class="form-ul-li">
+						<input id="url" class="input input-text" type="text" value="https://www.w3schools.com">
+						<label class="label-lane"></label>
+					</li>
+				</ul>
+				<button id="abrir" class="button button--50">ABRIR VENTANA</button>
+				<button id="cerrar" class="button button--50">CERRAR VENTANA</button>
+			</div>
+		</div>
+	</main>
+</body>
+
+</html>

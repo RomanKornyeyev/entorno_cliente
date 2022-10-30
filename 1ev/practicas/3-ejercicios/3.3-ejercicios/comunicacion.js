@@ -1,10 +1,27 @@
-//a la informacion de esta pagina la llamaremos ->"Inicial" 
+const abrir = document.querySelector("#abrir");
+const cerrar = document.querySelector("#cerrar");
+
+abrir.addEventListener("click", abrirVentana);
+
 function abrirVentana(){
-	//almacena la apertura de una nueva ventana	
-	let vs = window.open("VentanaSecundaria.html");	//esta ventana la llamaremos "secundaria"
-	let sMensajeInput = document.getElementById('idUrl').value;//almacena la informacion del input
-	vs.onload=function(){//al cargar la pagina "secundadia" ejecutara esta funcion
-		//toma el elemento de HTML con id "texto" y lo cambiar por el texto asignado
-		vs.document.getElementById("texto").innerHTML=sMensajeInput;
-	}	
+	let url = document.querySelector('#url').value;
+	let vs = window.open(url, "ventana1", "width=720,height=480");
+
+	cerrar.addEventListener("click", cerrarVentana);
+	function cerrarVentana(){if(!vs.closed) vs.close();}
+	//extra (contador)
+	contar();
+	
+	setTimeout(() => {if(!vs.closed) vs.close();}, 10000);
+}
+
+// extra (CONTADOR)
+function sleep(ms) {return new Promise(resolve => setTimeout(resolve, ms));}
+
+async function contar() {
+    for (i = 10; i > 0; i--) {
+        console.log(`La ventana se cerrará en: ${i} segundos`);
+        await sleep(1000);
+    }
+    console.log('Ventana cerrada');
 }
