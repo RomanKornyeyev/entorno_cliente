@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ventanas</title>
+	<link rel="stylesheet" href="generales2.css">
+	<script src="3.4_ventanas.js" defer></script>
+</head>
+<body>
+	<main class="container w-100 limit-width-120">
+		<!-- Ejer 1 -->
+		<div class="card w-100 limit-width-50 to-left-1250" id="ej1">
+			<div class="card-header">
+				1. Abrir una ventana nueva, con las siguiente condiciones:
+				<br>
+				- Se debe preguntar al usuario si está de acuerdo o no, y solo si acepta se abrirá la nueva ventana.
+				<br>
+				- La nueva ventana tendrá 300 x 200 pixeles, y se posicionará en 500x500 pixeles.
+				<br>
+				- Colocar el scroll de la ventana abajo del todo.
+			</div>
+			<div class="card-body flex card-body--row-wrap">
+				<ul class="form-ul">
+					<li class="form-ul-li">
+						<input id="url1" class="input input-text" type="text" value="https://www.w3schools.com">
+						<label class="label-lane"></label>
+					</li>
+				</ul>
+				<p class="w-100 text-center color-a-w">¿Estás de acuerdo?</p>
+				<button id="abrir1" class="button button--50">SÍ, ABRIR VENTANA</button>
+				<button class="button button--50">NO</button>
+			</div>
+		</div>
+
+		<!-- Ejer 2 -->
+		<div class="card w-100 limit-width-50 to-left-1250" id="ej2">
+			<div class="card-header">
+				2.- Al presionar este botón, generar un numero aleatorio entre 0 y 3, de forma que si se genera el 0 se abrirá
+				la web de gmail.com, si un 1 la web del correo de educamadrid (https://correoweb.educa.madrid.org/), si se
+				genera un 2, la web de yahoo, y un 3 la web de Outlook.
+				<br><br>
+				(Para generar un valor aleatorio utilizar la función random del objeto Math.)
+			</div>
+			<div class="card-body flex">
+				<button id="abrir2" class="button">ABRIR VENTANA ALEATORIA</button>
+				<p class="resultados w-100" id="resultados2"></p>
+			</div>
+		</div>
+
+		<!-- Ejer 3 -->
+		<div class="card w-100 limit-width-50 to-left-1250" id="ej2">
+			<div class="card-header">
+				3.- Con este botón aparecerá una ventana que ocupará el ancho del monitor y la mitad de su altura.
+				<br><br>
+				Se mostrará un alert indicando si el navegador tiene activadas las cookies.
+			</div>
+			<div class="card-body flex">
+				<button id="abrir3" class="button">ABRIR VENTANA</button>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
