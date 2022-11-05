@@ -6,7 +6,9 @@ function abrirVentana1() {
 	let url1 = document.querySelector('#url1').value;
 	let v1 = window.open(url1, "ventana1", "width=300,height=200,scrollbars=YES");
 	v1.moveTo(500,500);
-	v1.scrollTo(0, document.body.scrollHeight);
+	v1.onload = function scrollToBottom(){
+		v1.scrollTo(0, document.body.scrollHeight);
+   }
 }
 
 //ejer 2
@@ -39,8 +41,7 @@ function abrirVentana3(){
 
 	let v3 = window.open("https://www.w3schools.com", "ventana2", `width=${w},height=${h}`);
 
-	if (!cookieEnabled){ 
-        document.cookie = "testcookie";
-        cookieEnabled = document.cookie.indexOf("testcookie")!=-1;
-    }
+	
+	if(!navigator.cookieEnabled) alert("Tienes las cookies DESACTIVADAS");
+	else alert("Tienes las cookies ACTIVADAS");
 }

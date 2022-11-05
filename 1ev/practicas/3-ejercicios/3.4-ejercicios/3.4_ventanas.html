@@ -7,8 +7,14 @@
 	<title>Ventanas</title>
 	<link rel="stylesheet" href="generales2.css">
 	<script src="3.4_ventanas.js" defer></script>
+	<script src="generales.js"></script>
 </head>
 <body>
+	<nav class="side-nav">
+        <a class="button-2 button-nav" href="#ej1" onclick="sombrear(1)">Ejercicio 1</a>
+        <a class="button-2 button-nav" href="#ej2" onclick="sombrear(2)">Ejercicio 2</a>
+		<a class="button-2 button-nav" href="#ej3" onclick="sombrear(3)">Ejercicio 3</a>
+    </nav>
 	<main class="container w-100 limit-width-120">
 		<!-- Ejer 1 -->
 		<div class="card w-100 limit-width-50 to-left-1250" id="ej1">
@@ -50,7 +56,7 @@
 		</div>
 
 		<!-- Ejer 3 -->
-		<div class="card w-100 limit-width-50 to-left-1250" id="ej2">
+		<div class="card w-100 limit-width-50 to-left-1250" id="ej3">
 			<div class="card-header">
 				3.- Con este botón aparecerá una ventana que ocupará el ancho del monitor y la mitad de su altura.
 				<br><br>
