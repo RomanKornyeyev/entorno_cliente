@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ventanas</title>
+	<link rel="stylesheet" href="generales2.css">
+	<script src="4.0_arrays.js" defer></script>
+	<script src="generales.js"></script>
+</head>
+<body>
+	<nav class="side-nav">
+        <a class="button-2 button-nav" href="#ej1" onclick="sombrear(1)">Ejercicio 1</a>
+        <a class="button-2 button-nav" href="#ej2" onclick="sombrear(2)">Ejercicio 2</a>
+		<a class="button-2 button-nav" href="#ej3" onclick="sombrear(3)">Ejercicio 3</a>
+    </nav>
+	<main class="container w-100 limit-width-120">
+		<!-- Ejer 1 -->
+		<div class="card w-100 limit-width-50 to-left-1250" id="ej1">
+			<div class="card-header">
+				
+			</div>
+			<div class="card-body flex card-body--row-wrap">
+				<ul class="form-ul">
+					<li class="form-ul-li">
+						<input id="url1" class="input input-text" type="text" value="https://www.w3schools.com">
+						<label class="label-lane"></label>
+					</li>
+				</ul>
+				<p class="w-100 text-center color-a-w">¿Estás de acuerdo?</p>
+				<button id="abrir1" class="button button--50">SÍ, ABRIR VENTANA</button>
+				<button class="button button--50">NO</button>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
