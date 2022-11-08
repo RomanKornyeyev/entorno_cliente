@@ -4,33 +4,35 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Ventanas</title>
+	<title>Empleados</title>
 	<link rel="stylesheet" href="generales2.css">
 	<script src="4.0_arrays.js" defer></script>
 	<script src="generales.js"></script>
 </head>
 <body>
-	<nav class="side-nav">
-        <a class="button-2 button-nav" href="#ej1" onclick="sombrear(1)">Ejercicio 1</a>
-        <a class="button-2 button-nav" href="#ej2" onclick="sombrear(2)">Ejercicio 2</a>
-		<a class="button-2 button-nav" href="#ej3" onclick="sombrear(3)">Ejercicio 3</a>
-    </nav>
 	<main class="container w-100 limit-width-120">
 		<!-- Ejer 1 -->
 		<div class="card w-100 limit-width-50 to-left-1250" id="ej1">
 			<div class="card-header">
-				
-			</div>
+                1.- La empresa Dolty S.A., tiene tres delegaciones en tres provincias andaluzas
+				<b>(Sevilla, Huelva, Cádiz)</b>. Cada una de ellas tiene un numero variado de
+				empleados, que no es inferior a 4 en ninguna de ellas. Realiza un programa que
+				cargue el sueldo de los empleados, junto a su nombre, de cada una de las delegaciones en una array
+				distinto. Para finalizar la carga de cada array se ingresa como dato el cero.
+				<br><br>
+				Una vez ingresados los sueldos, mostrar los siguientes datos:
+				<br><br>
+				&nbsp;&nbsp;&nbsp;a) Informar del tamaño (numero de empleados) de cada una &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;de las delegaciones. <br>
+				&nbsp;&nbsp;&nbsp;b) Determinar la media de los sueldos de cada una de las &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delegaciones. <br>
+				&nbsp;&nbsp;&nbsp;c) Ordenar de menor a mayor los sueldos de Huelva, De &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mayor a menor los de Sevilla y
+						Cádiz. Indicando a que &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delegación pertenece cada lista ordenada <br>
+				&nbsp;&nbsp;d) Determinar  el sueldo menor y el mayor de las tres &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delegaciones.
+            </div>
 			<div class="card-body flex card-body--row-wrap">
-				<ul class="form-ul">
-					<li class="form-ul-li">
-						<input id="url1" class="input input-text" type="text" value="https://www.w3schools.com">
-						<label class="label-lane"></label>
-					</li>
-				</ul>
-				<p class="w-100 text-center color-a-w">¿Estás de acuerdo?</p>
-				<button id="abrir1" class="button button--50">SÍ, ABRIR VENTANA</button>
-				<button class="button button--50">NO</button>
+				<p class="w-100 text-center color-a-w">¿De qué delegación quieres introducir los empleados?</p>
+				<button id="sevilla" class="button button--33">Sevilla</button>
+				<button id="huelva"class="button button--33">Huelva</button>
+				<button id="cadiz"class="button button--33">Cádiz</button>
 			</div>
 		</div>
 	</main>

@@ -69,6 +69,7 @@ table, tr, td{
     border: 1px solid var(--primary);
 }
 .button--50{width: calc(50% - 1rem);}
+.button--33{width: calc(33% - 1.3rem);}
 .button::after{
     content: '';
     position: absolute;
