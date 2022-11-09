@@ -52,6 +52,7 @@ table, tr, td{
 .w-100{ width: 100%;}
 .limit-width-120{max-width: 120rem;}
 .limit-width-75{max-width: 75rem;}
+.limit-width-65{max-width: 65rem;}
 .limit-width-50{max-width: 50rem;}
 .color-a-w{color: var(--almost-white)}
 /* === BOTONES E INPUTS === */

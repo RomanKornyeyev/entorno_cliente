@@ -5,14 +5,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Empleados</title>
-	<link rel="stylesheet" href="generales2.css">
+	<link rel="stylesheet" href="generales.css">
 	<script src="4.0_arrays.js" defer></script>
 	<script src="generales.js"></script>
 </head>
 <body>
 	<main class="container w-100 limit-width-120">
 		<!-- Ejer 1 -->
-		<div class="card w-100 limit-width-50 to-left-1250" id="ej1">
+		<div class="card w-100 limit-width-65 to-left-1250" id="ej1">
 			<div class="card-header">
                 1.- La empresa Dolty S.A., tiene tres delegaciones en tres provincias andaluzas
 				<b>(Sevilla, Huelva, Cádiz)</b>. Cada una de ellas tiene un numero variado de
@@ -22,17 +22,38 @@
 				<br><br>
 				Una vez ingresados los sueldos, mostrar los siguientes datos:
 				<br><br>
-				&nbsp;&nbsp;&nbsp;a) Informar del tamaño (numero de empleados) de cada una &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;de las delegaciones. <br>
-				&nbsp;&nbsp;&nbsp;b) Determinar la media de los sueldos de cada una de las &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delegaciones. <br>
-				&nbsp;&nbsp;&nbsp;c) Ordenar de menor a mayor los sueldos de Huelva, De &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mayor a menor los de Sevilla y
-						Cádiz. Indicando a que &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delegación pertenece cada lista ordenada <br>
-				&nbsp;&nbsp;d) Determinar  el sueldo menor y el mayor de las tres &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delegaciones.
+				<ul>
+					<li>a) Informar del tamaño (numero de empleados) de cada una de las delegaciones.</li>
+					<li>b) Determinar la media de los sueldos de cada una de las delegaciones. </li>
+					<li>c) Ordenar de menor a mayor los sueldos de Huelva, De mayor a menor los de Sevilla y Cádiz. Indicando a que delegación pertenece cada lista ordenada</li>
+					<li>d) Determinar  el sueldo menor y el mayor de las tres delegaciones.</li>
+				</ul>
             </div>
 			<div class="card-body flex card-body--row-wrap">
-				<p class="w-100 text-center color-a-w">¿De qué delegación quieres introducir los empleados?</p>
-				<button id="sevilla" class="button button--33">Sevilla</button>
-				<button id="huelva"class="button button--33">Huelva</button>
-				<button id="cadiz"class="button button--33">Cádiz</button>
+				<label class="label">¿De qué delegación quieres introducir los empleados?</label>
+                <select id="delegaciones" class="seleccion">
+                    <option value="1" selected="selected">Sevilla</option>
+                    <option value="2">Huelva</option>
+					<option value="3">Cádiz</option>
+                </select>
+				<ul class="form-ul">
+                    <li class="form-ul-li">
+                        <input id="nombre" class="input input-text" type="text" placeholder="Introduce el nombre">
+                        <label class="label-lane"></label> 
+                    </li>
+                    <li class="form-ul-li">
+                        <input id="sueldo" class="input input-text" type="number" placeholder="Introduce el sueldo">
+                        <label class="label-lane"></label> 
+                    </li>
+                </ul>
+				<button id="enviar" class="button">INTRODUCIR</button>
+				<p id="avisos" class="resultados w-100"></p>
+				<p id="res-sevilla" class="resultados w-100"></p>
+				<p id="res-huelva" class="resultados w-100"></p>
+				<p id="res-cadiz" class="resultados w-100"></p>
+				<p id="res-a" class="resultados w-100"></p>
+				<p id="res-b" class="resultados w-100"></p>
+				<p id="res-c" class="resultados w-100"></p>
 			</div>
 		</div>
 	</main>
