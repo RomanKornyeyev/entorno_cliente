@@ -4,7 +4,70 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 4.2 - ROMAN</title>
+    <title>Ejercicio 4.2 (HERENCIA) - ROMAN</title>
+</head>
+<body>
+    <main class="container w-100 limit-width-120">
+        <!-- Ejercicio 4.2 -->
+        <div class="card w-100 limit-width-50 to-left-1250">
+            <div class="card-header">
+                Declara una clase llamada Mascotas, que reciba en el constructor los valores nombre y cantidad
+                de comida en gramos al día que consume. Definir un método que imprima las
+                características de cada mascota.<br><br>
+                Declarar luego una clase llamada MascotasComida, que herede de Mascotas y añada el
+                método mascotaDias, que en base a, si las bolsas de comida son de 3kg, para todas
+                las mascotas, calcule los días que durará la bolsa.<br><br>
+                Crea 3 mascotas diferentes y muestra la información para cada una de ellas.
+            </div>
+            <div class="card-body">
+                <p id="resultados" class="resultados w-100" >
+                    
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- SCRIPT -->
+    <script>
+        class Mascota{
+            nombre;
+            cantidad;
+
+            constructor(nombre, cantidad){
+                this.nombre = nombre;
+                this.cantidad = cantidad;
+            }
+
+            setNombre(nombre) {this.nombre = nombre;}
+            getNombre() {return this.nombre;}
+            setCantidad(cantidad) {this.cantidad = cantidad;}
+            getCantidad() {return this.cantidad;}
+
+            imprimir(){
+                return `<b>Nombre:</b> ${this.nombre} - <b>Cantidad diaria (gramos):</b> ${this.cantidad}`;
+            }
+        }
+
+        class MascotaComida extends Mascota{
+
+            getCantidad() {return this.cantidad;}
+            mascotaDias(){
+                return `La bolsa de 3kg le durará: ${3000/this.getCantidad()} días`;
+            }
+        }
+
+        let mascota1 = new MascotaComida("UNO", 500);
+        let mascota2 = new MascotaComida("DOS", 400);
+        let mascota3 = new MascotaComida("TRES", 600);
+        let listaMascotas = [mascota1, mascota2, mascota3];
+
+        let resultados = document.querySelector("#resultados");
+        listaMascotas.forEach(elemento => {
+            resultados.innerHTML += `${elemento.imprimir()}<br>${elemento.mascotaDias()}<br><br>`;
+        });
+
+    </script>
+
 
     <!-- ESTILOS -->
     <style>
@@ -329,60 +392,5 @@
             background-color: var(--strong-gray-2);
         }
     </style>
-</head>
-<body>
-    <main class="container w-100 limit-width-120">
-        <!-- Ejercicio 4.2 -->
-        <div class="card w-100 limit-width-50 to-left-1250">
-            <div class="card-header">
-                Declara una clase llamada Mascotas, que reciba en el constructor los valores nombre y cantidad
-                de comida en gramos al día que consume. Definir un método que imprima las
-                características de cada mascota.<br><br>
-                Declarar luego una clase llamada MascotasComida, que herede de Mascotas y añada el
-                método mascotaDias, que en base a, si las bolsas de comida son de 3kg, para todas
-                las mascotas, calcule los días que durará la bolsa.<br><br>
-                Crea 3 mascotas diferentes y muestra la información para cada una de ellas.
-            </div>
-            <div class="card-body">
-                <p id="resultados" class="resultados w-100" >
-                    
-                </p>
-            </div>
-        </div>
-    </main>
-
-    <!-- SCRIPT -->
-    <script>
-        class Mascota{
-            nombre;
-            cantidad;
-
-            constructor(nombre, cantidad){
-                this.nombre = nombre;
-                this.cantiad = cantidad;
-            }
-
-            imprimir(){
-                return `<b>Nombre:</b> ${this.nombre} - <b>Cantidad diaria (gramos):</b> ${this.cantiad}<br>`;
-            }
-        }
-
-        let mascota1 = new Mascota("UNO", 500);
-        let mascota2 = new Mascota("DOS", 400);
-        let mascota3 = new Mascota("TRES", 600);
-        let listaMascotas = [mascota1, mascota2, mascota3];
-
-        let resultados = document.querySelector("#resultados");
-        listaMascotas.forEach(elemento => {
-            resultados.innerHTML += elemento.imprimir();
-        });
-
-        class MascotaComida extends Mascota{
-            mascotaDias(cantiad){
-                return `prueba`;
-            }
-        }
-
-    </script>
 </body>
 </html>
