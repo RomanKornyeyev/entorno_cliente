@@ -80,13 +80,17 @@
             pintar();
 
             let comprobacion = [];
+            let tiempo = 500;
             
             function darVuelta(id, imgNum){
                 if (!document.getElementById(id).classList.contains("correcto")) {
                     if (!document.getElementById(id).classList.contains(`cara-${imgNum}`))
+                    
+                    //bloqueamos los clicks en toda la página hasta que se vuelvan a dar la vuelta
                     document.getElementById(id).classList.add(`cara-${imgNum}`);
                     comprobacion.push(id);
                     if (comprobacion.length==2) {
+                        document.querySelector("body").style.pointerEvents = "none";
                         if(comprobacion[0] != comprobacion[1]){
                             if (comprobacion[0].charAt(3) == comprobacion[1].charAt(3)) {                                
                                 document.getElementById(comprobacion[0]).classList.add("correcto");
@@ -94,14 +98,26 @@
                                 contador++;
                                 document.getElementById("contador").innerHTML = `ACIERTOS: ${contador}`;
                             }else{
-                                document.getElementById(comprobacion[0]).classList.remove(`cara-${comprobacion[0].charAt(3)}`);
-                                document.getElementById(comprobacion[1]).classList.remove(`cara-${comprobacion[1].charAt(3)}`);
+                                document.getElementById(comprobacion[0]).classList.add("incorrecto");
+                                document.getElementById(comprobacion[1]).classList.add("incorrecto");
+
+                                setTimeout(() => {
+                                    document.getElementById(comprobacion[0]).classList.remove(`cara-${comprobacion[0].charAt(3)}`);
+                                    document.getElementById(comprobacion[1]).classList.remove(`cara-${comprobacion[1].charAt(3)}`);
+                                    document.getElementById(comprobacion[0]).classList.remove("incorrecto");
+                                    document.getElementById(comprobacion[1]).classList.remove("incorrecto");
+                                }, tiempo);
                             }
-                            comprobacion = [];
-                        }
-                        else{
+                            //timeout necesario para que el array no se vacíe antes de tiempo.
+                            setTimeout(() => {comprobacion = [];}, tiempo);
+                        }else{
+                            //si pulsa la misma imagen 2 veces, vacía el último pusheo del array de comprobación
+                            //en otras palabras, si el usuario pulsa la misma imagen 2 veces, no pasa nada
                             comprobacion.pop();
                         }
+
+                        //desbloqueamos el puntero para que vuelva a poder seleccionar tarjetas
+                        setTimeout(() => {document.querySelector("body").style.pointerEvents = "auto";}, tiempo);
                         console.log(comprobacion);
                     }
                 }
@@ -486,8 +502,23 @@
         .cara-3{background-image: url('./img/3.jpg');}
         .cara-4{background-image: url('./img/4.jpg');}
         .cara-5{background-image: url('./img/5.jpg');}
-        .cara{background-color: red;}
-        .correcto{background-color: green;}
+        .cara{background-color: orange;}
+        .correcto{animation: correcto 500ms ease-out forwards;}
+        .incorrecto{animation: incorrecto 500ms ease-out forwards;}
+
+        @keyframes correcto {
+            0%{box-shadow: none;}
+            50%{box-shadow: 0px 0px 50px 15px rgba(38,250,0,0.75);}
+            100%{box-shadow: 0px 0px 15px 3px rgba(38,250,0,0.75);}
+        }
+
+        @keyframes incorrecto {
+            0%{box-shadow: none;}
+            25%{box-shadow: 0px 0px 45px 10px rgba(250,0,0,0.75);}
+            50%{box-shadow: 0px 0px 15px 3px rgba(250,0,0,0.75);}
+            75%{box-shadow: 0px 0px 45px 10px rgba(250,0,0,0.75);}
+            100%{box-shadow: none;}
+        }
     </style>
 </body>
 </html>
