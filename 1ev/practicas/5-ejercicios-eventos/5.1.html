@@ -83,20 +83,29 @@
             let tiempo = 500;
             
             function darVuelta(id, imgNum){
+                //si la carta no tiene la clase correcto (si no ha sido revelada esa pareja)
                 if (!document.getElementById(id).classList.contains("correcto")) {
-                    if (!document.getElementById(id).classList.contains(`cara-${imgNum}`))
-                    
-                    //bloqueamos los clicks en toda la página hasta que se vuelvan a dar la vuelta
-                    document.getElementById(id).classList.add(`cara-${imgNum}`);
+                    //si la carta no está girada (si no está enseñando la cara), la giramos
+                    if (!document.getElementById(id).classList.contains(`cara-${imgNum}`)){
+                        document.getElementById(id).classList.add(`cara-${imgNum}`);
+                    } 
+                    //pusheamos el id al arry auxiliar de comprobación
                     comprobacion.push(id);
+                    //si el array auxiliar de comprobación tiene 2 elementos, se realiza la comprobación, si no, no
                     if (comprobacion.length==2) {
+                        //bloqueamos los clicks en toda la página 500ms (lo que tarda la animación)
                         document.querySelector("body").style.pointerEvents = "none";
+                        //si el id NO es igual (ya que los equivalentes son: id-1 >> id-1-2)
                         if(comprobacion[0] != comprobacion[1]){
+                            //comprobamos el carácter de la 3a pos en el ID (el $i del bucle)
+                            //si hacen match, añadimos la clase correcto y sumamos el contador de aciertos
                             if (comprobacion[0].charAt(3) == comprobacion[1].charAt(3)) {                                
                                 document.getElementById(comprobacion[0]).classList.add("correcto");
                                 document.getElementById(comprobacion[1]).classList.add("correcto");
                                 contador++;
                                 document.getElementById("contador").innerHTML = `ACIERTOS: ${contador}`;
+                            //si no hacen match, añadimos la clase incorrecto (para la animación)
+                            //y la retiramos a los 500ms (junto con la imagen de fondo)
                             }else{
                                 document.getElementById(comprobacion[0]).classList.add("incorrecto");
                                 document.getElementById(comprobacion[1]).classList.add("incorrecto");
@@ -109,6 +118,7 @@
                                 }, tiempo);
                             }
                             //timeout necesario para que el array no se vacíe antes de tiempo.
+                            //vaciamos el array auxiliar de comprobación
                             setTimeout(() => {comprobacion = [];}, tiempo);
                         }else{
                             //si pulsa la misma imagen 2 veces, vacía el último pusheo del array de comprobación
