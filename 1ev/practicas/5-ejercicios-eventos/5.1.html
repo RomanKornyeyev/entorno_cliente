@@ -45,29 +45,72 @@
             </div>
             <div class="card-body">
                 
-                <div class="resultados w-100 flex-center">
+                <div class="resultados w-100 flex-center flex-column">
                     <div id="contenedorCartas" class="grid-cartas">
                         
                     </div>
+                    <p id="contador" class="resultados w-100 text-center"></p>
                 </div>
             </div>
         </div>
+        
 
         <!-- EJER 2 -->
         <script>
             const contenedor = document.querySelector("#contenedorCartas");
 
-            function limpiar(elemento){elemento.innerHTML = "";}
-
+            let cartas = [];
+            
+            for (let i = 1; i <= 5; i++) {
+                cartas.push(`<div class="img-wrapper bg cara" id="id-${i}" onclick="darVuelta('id-${i}', ${i})"></div>`);
+                cartas.push(`<div class="img-wrapper bg cara" id="id-${i}-2" onclick="darVuelta('id-${i}-2', ${i})"></div>`);
+            }
+            //shuffle de cartas
+            cartas = cartas.sort((a, b) => 0.5 - Math.random());
+            let contador = 0;
+            
+            let limpiar = (elemento) => elemento.innerHTML = "";
             function pintar(){
                 limpiar(contenedor);
-                for (let i = 0; i < 10; i++) {
-                    contenedor.innerHTML += `<div class="img-wrapper"><img src="./img/1.jpg"></div>`; 
+                for (let i = 0; i < cartas.length; i++) {
+                    contenedor.innerHTML += `${cartas[i]}`; 
                 }
+                document.getElementById("contador").innerHTML = `ACIERTOS: ${contador}`;
+            }
+            pintar();
+
+            let comprobacion = [];
+            
+            function darVuelta(id, imgNum){
+                if (!document.getElementById(id).classList.contains("correcto")) {
+                    if (!document.getElementById(id).classList.contains(`cara-${imgNum}`))
+                    document.getElementById(id).classList.add(`cara-${imgNum}`);
+                    comprobacion.push(id);
+                    if (comprobacion.length==2) {
+                        if(comprobacion[0] != comprobacion[1]){
+                            if (comprobacion[0].charAt(3) == comprobacion[1].charAt(3)) {                                
+                                document.getElementById(comprobacion[0]).classList.add("correcto");
+                                document.getElementById(comprobacion[1]).classList.add("correcto");
+                                contador++;
+                                document.getElementById("contador").innerHTML = `ACIERTOS: ${contador}`;
+                            }else{
+                                document.getElementById(comprobacion[0]).classList.remove(`cara-${comprobacion[0].charAt(3)}`);
+                                document.getElementById(comprobacion[1]).classList.remove(`cara-${comprobacion[1].charAt(3)}`);
+                            }
+                            comprobacion = [];
+                        }
+                        else{
+                            comprobacion.pop();
+                        }
+                        console.log(comprobacion);
+                    }
+                }
+                
             }
 
-            pintar();
-        </script>
+            
+            
+    </script>
     </main>
     
 
@@ -137,47 +180,6 @@
             --primary: #08FDD8;
             --secondary: #000;
             --error: #ffc400;
-        }
-
-        /* === UTILIDADES === */
-        .text-center {
-            text-align: center;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        .w-100 {
-            width: 100%;
-        }
-
-        .limit-width-120 {
-            max-width: 120rem;
-        }
-
-        .limit-width-75 {
-            max-width: 75rem;
-        }
-
-        .limit-width-65 {
-            max-width: 65rem;
-        }
-
-        .limit-width-50 {
-            max-width: 50rem;
-        }
-
-        .color-a-w {
-            color: var(--almost-white)
-        }
-
-        .flex-center{
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         /* === BOTONES E INPUTS === */
@@ -407,6 +409,51 @@
             /* padding: 5rem; */
             background-color: var(--strong-gray-2);
         }
+
+        /* === UTILIDADES === */
+        .text-center {
+            text-align: center;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+
+        .limit-width-120 {
+            max-width: 120rem;
+        }
+
+        .limit-width-75 {
+            max-width: 75rem;
+        }
+
+        .limit-width-65 {
+            max-width: 65rem;
+        }
+
+        .limit-width-50 {
+            max-width: 50rem;
+        }
+
+        .color-a-w {
+            color: var(--almost-white)
+        }
+
+        .flex-center{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+        .flex-column{
+            flex-direction: column;
+        }
     </style>
     <!-- ESTILOS EJER 1 -->
     <style>
@@ -431,6 +478,19 @@
             grid-template-columns: repeat(5, 1fr);
             gap: 2rem;
         }
+        .bg{
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        
+        .cara-1{background-image: url('./img/1.jpg');}
+        .cara-2{background-image: url('./img/2.jpg');}
+        .cara-3{background-image: url('./img/3.jpg');}
+        .cara-4{background-image: url('./img/4.jpg');}
+        .cara-5{background-image: url('./img/5.jpg');}
+        .cara{background-color: red;}
+        .correcto{background-color: green;}
     </style>
 </body>
 </html>
