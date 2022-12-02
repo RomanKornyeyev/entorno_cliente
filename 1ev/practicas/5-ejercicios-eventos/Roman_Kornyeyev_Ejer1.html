@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Román - Ejercicio 1</title>
+</head>
+<body>
+    <form action="#" onsubmit="comprobarEnvio()">
+        <!-- apartado 1: uso required para que el campo disco sea obligatorio -->
+        <!-- apartado 2: uso maxlength="25" para que el máximo de carácteres de disco y nombre sean 25 -->
+        <!-- además de maxlength, uso javascript -->
+        Nombre de disco: <input id="nombreDisco" type="text" placeholder="xxxxxxxx" required="" maxlength="25"><br>
+        Prestado sí <input id="presadoSi" type="checkbox">
+        Prestado no <input id="presadoNo" type="checkbox"><br>
+        Usuario de prestamo <input id="usuario" type="text" placeholder="xxxxxxxx" maxlength="25"><br>
+        <!-- apartado 3: solamente he conseguido validar que sea 000-00-00-00 (se cambia el color en el input si está bien o mal) -->
+        Teléfono <input id="telefono" type="text" placeholder="000-00-00-00"><br><br>
+
+        Comentario<br>
+        <!-- apartado 4: va cambiando el color, he puesto maxleng, pero también está con javascript -->
+        <textarea id="comentario" cols="50" rows="10" placeholder="--Comentario sobre el album--" maxlength="300"></textarea><br>
+        <input type="submit" value="enviar">
+        <input type="reset" value="limpiar datos">
+    </form>
+
+    <!-- SCRIPT -->
+    <script>
+        //nombre disco y usuario (longitud)
+        let nombreDisco = document.getElementById("nombreDisco");
+        let usuario = document.getElementById("usuario");
+        let validaDisco = false;
+        let validaUsuario = false;
+
+
+        //telefono
+        let tlfsPatron = /^\d{3}\-\d{2}\-\d{2}\-\d{2}$/;
+        let telefono = document.getElementById("telefono");
+        let validaTlf = false;
+
+        telefono.addEventListener("keyup", (e) => {
+            telefono = document.getElementById("telefono");
+            if(tlfsPatron.test(telefono.value)) {
+                telefono.style.color = "green";
+                validaTlf = true;
+            } else if (telefono.value === '') {
+                telefono.style.color = "";
+            } else {
+                validaTlf = false;
+                telefono.style.color = "red";
+            }
+        });
+
+
+        //comentario
+        let comentario = document.getElementById("comentario");
+        let validaComent = false;
+
+        comentario.addEventListener("keyup", (e) => {
+            comentario = document.getElementById("comentario");
+            if(comentario.value.length < 300) {
+                comentario.style.color = "green";
+            } else if (comentario.value === '') {
+                comentario.style.color = "";
+            } else {
+                comentario.style.color = "red";
+            }
+        });
+
+
+        //función validaciones y alert al enviar el formulario
+        function comprobarEnvio(){
+            if (nombreDisco.value) {
+                if (nombreDisco.value.length < 25) validaDisco = true;
+                else validaDisco = false;
+            }
+            if (usuario.value) {
+                if (usuario.value.length < 25) validaUsuario = true;
+                else validaUsuario = false;
+            }
+            if (telefono.value) {
+                if (tlfsPatron.test(telefono.value)) validaTlf = true;
+                else validaTlf = false;
+            }
+            if (comentario.value) {
+                if (comentario.value.length < 300) validaComent = true;
+                else validaComent = false;
+            }
+            respuesta = `VALIDACIONES:
+                Nombre de disco: ${validaDisco}
+                Usuario de prestamo: ${validaUsuario}
+                Teléfono: ${validaTlf}
+                Comentario: ${validaComent}`;
+
+            alert(respuesta);
+        }
+    </script>
+</body>
+</html>

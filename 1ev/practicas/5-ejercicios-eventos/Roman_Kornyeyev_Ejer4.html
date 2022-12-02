@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Román - Ejercicio 4</title>
+</head>
+<body>
+
+
+    <script>
+        //inicializo el array
+        let arr = [];
+
+        //cargo el array (10 valores aleatorios entre 0 y 5000)
+        //uso una carga aleatoria para mayor comodidad, ya que me lo permites
+        for (let i = 0; i < 10; i++) {
+            arr.push(Math.floor(Math.random() * 5000));
+            console.log(arr[i]);
+        }
+
+        //apartado 1 (suma de todos los números del array)
+        let total = arr.reduce((a, b) => a + b, 0);
+        console.log(total);
+
+        //apartado 2
+        let sumaTotMenor600 = 0;
+        arr.forEach(element => {
+            if (element > 600) {
+                sumaTotMenor600 += element;
+            }
+        });
+        console.log(sumaTotMenor600);
+
+        //apartado 3 (número de valores superiores a 2000)
+        let numValores = 0;
+        arr.forEach(element => {
+            if (element > 2000) {
+                numValores++;
+            }
+        });
+        console.log(numValores);
+
+    </script>
+</body>
+</html>

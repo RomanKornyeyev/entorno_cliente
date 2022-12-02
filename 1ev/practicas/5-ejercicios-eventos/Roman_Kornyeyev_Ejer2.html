@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Román - Ejercicio 2</title>
+</head>
+<body>
+
+    <!-- SCRIPT -->
+    <script>
+        // clase jugador
+        class Jugador{
+            nombre;
+            edad;
+            ciudad;
+
+            constructor(nombre, edad, ciudad){
+                this.nombre = nombre;
+                this.edad = edad;
+                this.ciudad = ciudad;
+            }
+
+            setNombre(nombre) {this.nombre = nombre;}
+            getNombre() {return this.nombre;}
+            setEdad(edad) {this.edad = edad;}
+            getEdad() {return this.edad;}
+            setCiudad(ciudad) {this.ciudad = ciudad;}
+            getCiudad() {return this.ciudad;}
+
+            imprimir(){
+                return `<b>Nombre:</b> ${this.nombre} - <b>Edad:</b> ${this.edad} - <b>Ciudad:</b> ${this.ciudad}`;
+            }
+        }
+
+        // clase campeonato
+        class Campeonato extends Jugador{
+            puntuacion;
+
+            constructor(puntuacion){
+                this.puntuacion = puntuacion;
+            }
+
+            setPuntuacion(puntuacion) {this.puntuacion = puntuacion;}
+            getPuntuacion() {return this.puntuacion;}
+
+            //metodo de si tiene puntuación +50 va a partido
+            iraPartido(){
+                if (this.puntuacion > 50) return `El jugador ${this.getNombre()} irá al campeonato.`;
+                else  return `El jugador ${this.getNombre()} NO irá al campeonato.`;
+            }
+        }
+    </script>
+</body>
+</html>

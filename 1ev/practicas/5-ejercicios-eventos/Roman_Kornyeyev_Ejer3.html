@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Román - Ejercicio 3</title>
+    <style>
+        .global{
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <!-- ya que me lo permites, usaré únicamente el manejador onclick, para mayor comodidad -->
+    
+    <!-- boton para color aleatorio -->
+    <button id="colorFondo" onclick="cambiaFondoAl()">ColorFondo</button>
+    <!-- div global para color blanco -->
+    <!-- lo que hago es darle al div una altura y anchura del 100% de la pantalla -->
+    <!-- y así al clickar fuera (en cualquier otra parte que no sea el botón se cambia a blanco) -->
+    <!-- y no se solapa con el botón -->
+    <div class="global" onclick="cambiarFondoBlanco()"></div>
+
+    <!-- SCRIPT -->
+    <script>
+        let boton = document.getElementById("colorFondo");
+
+        function cambiaFondoAl(){
+            color = "white";
+            aleatorio = Math.floor(Math.random() * 5);
+            switch (aleatorio) {
+                case 1: color = "green"; break;
+                case 2: color = "purple"; break;
+                case 3: color = "red"; break;
+                case 4: color = "yellow"; break;
+                case 5: color = "orange"; break;
+                case 6: color = "blue"; break;
+            }
+
+            document.body.style.backgroundColor = color;
+        }
+
+        function cambiarFondoBlanco(){
+            document.body.style.backgroundColor = "white"; 
+        }
+    </script>
+</body>
+</html>
