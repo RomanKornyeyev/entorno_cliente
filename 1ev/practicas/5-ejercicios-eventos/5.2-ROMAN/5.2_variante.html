@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>5.2 - ROMÁN</title>
+</head>
+<body>
+	<div id="cuadrado"></div>
+
+	<script>
+		let cuadrado = document.querySelector("#cuadrado");
+
+		window.addEventListener("mousemove", function (e){
+			cuadrado.style.marginLeft = `calc(${e.clientX}px - 50px)`;
+			cuadrado.style.marginTop = `calc(${e.clientY}px - 50px)`;
+			cuadrado.innerHTML = `X: ${e.clientX}, Y: ${e.clientY}`;
+		});
+	</script>
+	<style>
+		*{margin:0;padding:0}
+		body{position: relative;}
+		#cuadrado{
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</body>
+</html>
