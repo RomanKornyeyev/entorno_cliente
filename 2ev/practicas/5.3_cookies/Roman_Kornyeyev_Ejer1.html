@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Román - Ejercicio 1</title>
+</head>
+<body>
+
+    <!-- 
+    ================== EXAMEN ===================
+    Utilizando JavaScript, HTML y respetando el formato mostrado en la captura, escribe el código
+    necesario para que se cumplan las siguientes funcionalidades, al pulsar el botón enviar:
+        • El nombre del disco no puede estar vacío.
+        • El nombre del disco y el del usuario del préstamo tienen máximo 25 caracteres.
+        • El número de teléfono no es obligatorio, pero de rellenarlo admitirá los formatos
+        "000000000", ó 000-00-00-00, siempre 9 dígitos.
+        • La longitud máxima del texto que se puede introducir en el comentario es de 300 caracteres.
+        • Al pulsar el botón Enviar, nos mostrará los datos o validaciones realizadas.
+        • Utilizar placeholder en Teléfono y Comentarios.
+        • Mostrar mediante alert, el resultado de las validaciones.
+    -->
+
+    <!-- 
+    Ejercicio Cookies 2:
+    Modifica el archivo del ejercicio del formulario del examen practico, de forma que:
+        a) Cada vez que el usuario envie el formulario y haya algún error, se incremente la
+        variable contador almacenada en una cookie.
+        b) El resultado del numero de intentos se reflejará en un campo de texto que se
+        encontrará y que informará al final del formulario.
+    -->
+
+    <form action="#" onsubmit="comprobarEnvio()">
+        Nombre de disco: <input id="nombreDisco" type="text" placeholder="max 25 carácteres"><br>
+        Prestado sí <input id="presadoSi" type="checkbox">
+        Prestado no <input id="presadoNo" type="checkbox"><br>
+        Usuario de prestamo <input id="usuario" type="text" placeholder="max 25 carácteres"><br>
+        Teléfono <input id="telefono" type="text" placeholder="000-00-00-00"><br><br>
+
+        Comentario<br>
+        <textarea id="comentario" cols="50" rows="10" placeholder="--Comentario sobre el album--"></textarea><br>
+        <input type="submit" value="enviar">
+        <input type="reset" value="limpiar datos">
+    </form>
+    <p id="info-errores"></p>
+
+    <!-- SCRIPT -->
+    <script>
+        //nombre disco y usuario
+        let nombreDisco = document.getElementById("nombreDisco");
+        let usuario = document.getElementById("usuario");
+        let validaDisco = false;
+        let validaUsuario = false;
+
+        //telefono
+        let tlfsPatron = /^[0-9]{3}[-]?[0-9]{2}[-]?[0-9]{2}[-]?[0-9]{2}$/;
+        let telefono = document.getElementById("telefono");
+        let validaTlf = false;
+
+        //comentario
+        let comentario = document.getElementById("comentario");
+        let validaComent = false;
+
+        //contador errores
+        let contError = 0;
+
+        //función validaciones y alert al enviar el formulario
+        function comprobarEnvio(){
+            if (nombreDisco.value) {
+                if (nombreDisco.value.length < 25 && nombreDisco.value.length > 0) validaDisco = true;
+                else{
+                    validaDisco = false;
+                    contError++;
+                }
+            }
+            if (usuario.value) {
+                if (usuario.value.length < 25) validaUsuario = true;
+                else{
+                    validaUsuario = false;
+                    contError++;
+                } 
+            }
+            if (telefono.value) {
+                if (tlfsPatron.test(telefono.value)) validaTlf = true;
+                else{
+                    validaTlf = false;
+                    contError++;
+                }
+            }
+            if (comentario.value) {
+                if (comentario.value.length < 300) validaComent = true;
+                else{
+                    validaComent = false;
+                    contError++;
+                } 
+            }
+            respuesta = `VALIDACIONES:
+                Nombre de disco: ${validaDisco}
+                Usuario de prestamo: ${validaUsuario}
+                Teléfono: ${validaTlf}
+                Comentario: ${validaComent}`;
+
+            alert(respuesta);
+        }
+
+        //modificación para el ejercicio 5.3
+        let infoErrores = document.getElementById("info-errores");
+        document.cookie = "fallos = 0";
+        let cookies = document.cookie;
+        infoErrores.innerHTML = `${cookies}`;
+
+        //función para inicializar cookie
+        function setCookie(cname, cvalue){document.cookie = cname + "=" + cvalue;}
+        //función para recuperar info de una cookie
+        function getCookie(cname){
+            let name = cname + "="; //crea una variable con el texto del campo y un igual
+            let ca = document.cookie.split(';'); //divide la cookie en trozos separados por ;
+            for (let i = 0; i < ca.length; i++) { //Recorre cada trozo de la cookie
+                let c = ca[i];
+                while(c.charAt(0) == '') c = c.substring(1);
+                if (c.indexOf(name) == 0) //si encuentra el campo buscado
+                    return c.substring(name.length, c.length); //lo devuelve
+
+            }
+            return ""; //sino devuelve vacío
+        }
+        //function para comprobar si una cookie está inicializada
+        function checkCookie(cname){
+            let cookie = getCookie(cname); //se extrae el valor (función anterior)
+            if (username!="") { //Si no está vacío
+                infoErrores.innerHTML = contError;
+            }
+        }
+    </script>
+</body>
+</html>
