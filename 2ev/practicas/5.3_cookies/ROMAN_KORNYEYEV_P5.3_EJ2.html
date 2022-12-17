@@ -62,53 +62,63 @@
         let comentario = document.getElementById("comentario");
         let validaComent = false;
 
-        //contador errores
-        let contError = 0;
+       //contador errores (para cookies)
+       let contError = 0;
 
         //función validaciones y alert al enviar el formulario
         function comprobarEnvio(){
+            //DISCO (obligatorio y no más de 25 chars)
             if (nombreDisco.value) {
-                if (nombreDisco.value.length < 25 && nombreDisco.value.length > 0) validaDisco = true;
-                else{
-                    validaDisco = false;
-                    contError++;
-                }
+                if (nombreDisco.value.length < 25 && nombreDisco.value.length > 0)
+                    validaDisco = true;
+            }else{
+                validaDisco = false;
+                contError++;
             }
-            if (usuario.value) {
-                if (usuario.value.length < 25) validaUsuario = true;
-                else{
-                    validaUsuario = false;
-                    contError++;
-                } 
+
+            //USUARIO (opcional, no más de 25 chars)
+            if (usuario.value.length < 25)
+                validaUsuario = true;
+            else{
+                validaUsuario = false;
+                contError++;
             }
-            if (telefono.value) {
+
+            //TELÉFONO (opcional, 000000000 o 000-00-00-00)
+            if(telefono.value){
                 if (tlfsPatron.test(telefono.value)) validaTlf = true;
                 else{
                     validaTlf = false;
                     contError++;
                 }
+            }else{
+                validaTlf = true;
             }
-            if (comentario.value) {
-                if (comentario.value.length < 300) validaComent = true;
-                else{
-                    validaComent = false;
-                    contError++;
-                } 
+            
+
+            //COMENTARIO (opcional, max 300 chars)
+            if (comentario.value.length < 300) validaComent = true;
+            else{
+                validaComent = false;
+                contError++;
             }
+            
             respuesta = `VALIDACIONES:
                 Nombre de disco: ${validaDisco}
                 Usuario de prestamo: ${validaUsuario}
                 Teléfono: ${validaTlf}
-                Comentario: ${validaComent}`;
+                Comentario: ${validaComent}
+                Errores: ${contError}`;
 
             alert(respuesta);
+            console.log("cont err antes de limpiar: "+contError);
+            checkCookie("cErrores");
+            contError=0;
+            console.log("cont err después de limpiar: "+contError);
         }
 
         //modificación para el ejercicio 5.3
         let infoErrores = document.getElementById("info-errores");
-        document.cookie = "fallos = 0";
-        let cookies = document.cookie;
-        infoErrores.innerHTML = `${cookies}`;
 
         //función para inicializar cookie
         function setCookie(cname, cvalue){document.cookie = cname + "=" + cvalue;}
@@ -116,22 +126,28 @@
         function getCookie(cname){
             let name = cname + "="; //crea una variable con el texto del campo y un igual
             let ca = document.cookie.split(';'); //divide la cookie en trozos separados por ;
+            let c;
             for (let i = 0; i < ca.length; i++) { //Recorre cada trozo de la cookie
-                let c = ca[i];
-                while(c.charAt(0) == '') c = c.substring(1);
-                if (c.indexOf(name) == 0) //si encuentra el campo buscado
-                    return c.substring(name.length, c.length); //lo devuelve
-
+                c = ca[i]; // errores=0; expires=6;
+                //while(c.charAt(0) == '') c = c.substring(1);
+                if (c.indexOf(cname) == 0) //si encuentra el campo buscado
+                    return c.substring(cname.length+1, c.length); //lo devuelve
             }
             return ""; //sino devuelve vacío
         }
         //function para comprobar si una cookie está inicializada
-        function checkCookie(cname){
-            let cookie = getCookie(cname); //se extrae el valor (función anterior)
-            if (username!="") { //Si no está vacío
-                infoErrores.innerHTML = contError;
+        function checkCookie(nombre){
+            let cookie = getCookie(nombre); //se extrae el valor (función anterior)
+            if (cookie!="") { //Si no está vacío
+                setCookie(nombre, parseInt(getCookie(nombre))+contError);
+            }else{ //sino
+                setCookie(nombre, 0);
             }
+            infoErrores.innerHTML = "Errores acumulados: "+getCookie(nombre);
         }
+
+        //primera carga de cookie
+        checkCookie("cErrores");
     </script>
 </body>
 </html>
