@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        main{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        div{
+            padding: 5px;
+        }
+        .contenedor{
+            background-color: #EAEAEA;
+            height: 75%;
+            width: 50%;
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .contenedor__formulario{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column;
+            gap: 15px;
+        }
+        .contendeor__checkbox{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            flex-flow: column;
+            gap: 5px;
+        }
+        input{
+            padding: 5px;
+        }
+        section{
+            width: 50%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <main class="main">
+        <div class="contenedor">
+            <div class="contenedor__formulario">
+                Introduce numero de checkbox 
+                <input type="number" min="0" name="" id="numeroCheckbox" value="1">
+                <input type="button" id="boton" value="Crear checkbox">
+            </div>
+            <div class="contendeor__checkbox" id="contendeor__checkbox">
+
+            </div>
+        </div>
+    </main>
+    <script>
+        let boton = document.getElementById("boton");
+        let contenedorCheckbox = document.getElementById("contendeor__checkbox");
+        boton.addEventListener("click", function() {
+            let titulo = document.createElement("h2");
+            titulo.innerText = "Listado de checkbox";
+            contenedorCheckbox.appendChild(titulo);
+        }, {once : true});
+
+        boton.addEventListener("click", function(){
+            let numeroCheckbox = parseInt(document.getElementById("numeroCheckbox").value);
+            for (let i = 0; i < numeroCheckbox; i++) {
+                let section = document.createElement("section");
+                let input = document.createElement("input");
+                input.type="checkbox";
+                input.name="checkbox"+i;
+                input.id="checkbox"+i;
+                input.value=Math.random()*10;
+
+                let label = document.createElement("label");
+                label.htmlFor = "checkbox"+i;
+                label.appendChild(document.createTextNode(input.value))
+
+                
+                section.appendChild(input)
+                section.appendChild(label);
+                contenedorCheckbox.appendChild(section);
+            }
+        })
+    </script>
+</body>
+</html>

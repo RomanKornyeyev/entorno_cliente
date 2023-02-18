@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Async</title>
+    </head>
+
+    <body>
+        <main>
+            <h3>Comprobar disponibilidad del login</h3>
+            <form class="form" method="post" action="">
+                <label
+                    >Nombre de usuario:
+                    <input type="text" name="user" id="user" />
+                </label>
+                <input
+                    type="submit"
+                    value="Comprobar disponibilidad"
+                    class="login"
+                />
+            </form>
+        </main>
+
+        <script>
+            const login = document.querySelector(".login");
+            const form = document.querySelector(".form");
+
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                let username = document.querySelector("#user").value;
+
+                let user = await fetchDB(username);
+
+                console.log(user);
+
+                const div = document.createElement("div");
+                div.classList.add("solucion");
+
+                form.nextSibling.remove();
+
+                let available = false;
+
+                if (user && user.name.toLowerCase() == username.toLowerCase()) {
+                    available = true;
+                }
+
+                if (available) {
+                    div.innerText = `El usuario ${username} se encuentra en nuestra base de datos`;
+                } else {
+                    div.innerText = `El usuario ${username} NO se encuentra en nuestra base de datos`;
+                    console.log("no disponible");
+                }
+
+                form.parentNode.appendChild(div);
+            });
+
+            async function fetchDB(username) {
+                const formData = new FormData();
+                formData.append("name", username);
+
+                return await fetch("json.php", {
+                    method: "post",
+                    //make sure to serialize your JSON body
+                    body: formData,
+                }).then((response) => response.json());
+            }
+        </script>
+    </body>
+</html>

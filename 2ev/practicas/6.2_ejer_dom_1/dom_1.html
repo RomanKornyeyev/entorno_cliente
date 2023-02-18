@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        main{   
+            margin: 0 auto;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            width: 50%;
+            height: 40%;
+            border: 1px solid black;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-flow: column;
+            padding: 15px;
+        }
+        .botones{
+            width: 100%;
+            display: flex;
+            height: 30%;
+            gap: 15px;
+        }
+        .botones>input{
+            width: 50%;
+            height: 100%;
+            border: none;
+            transition: all 0.2s ease-out;
+        }
+        .botones>input:hover{
+            background-color: rgb(100, 100, 100);
+        }
+    </style>
+</head>
+<body>
+    <main class="main">
+        <div class="container">
+            <h1 id="titulo">ESTE ES UN TITULO DINAMICO</h1>
+            <div class="botones">
+                <input id="color" type="button" value="Cambiar color">
+                <input id="tamanio" type="button" value="Cambiar tamaño fuente">
+            </div>
+        </div>
+    </main>
+    <script>
+        let titulo = document.getElementById("titulo");
+        let color = document.getElementById("color");
+        let tamanio = document.getElementById("tamanio");
+        color.addEventListener("click", function(){
+            titulo.style.color=obtenerColor();
+        });
+        tamanio.addEventListener("click", function(){
+            titulo.style.fontSize=obtenerTamanio();
+        });
+        function obtenerTamanio(){
+            return Math.floor((Math.random()*40)+10)+"px";
+        }
+        function obtenerColor(){
+            return "rgb(" + Math.floor(Math.random()*255) + "," + Math.floor(Math.random()*255)  + "," + Math.floor(Math.random()*255) + ")"
+        }
+    </script>
+</body>
+</html>
