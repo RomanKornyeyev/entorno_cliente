@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Ajax</title>
+    <style>
+        body{
+            background-color: papayawhip;
+        }
+
+        #general{
+            text-align: center;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="general">
+        <form action="index.php" method="post" class="formulario" id="cosa">
+            <h1>
+                Comprobar disponibilidad del login
+            </h1>
+            <br>
+            <p>
+                <label for="login" class="form__field">Nombre del usuario:</label>
+                <input type="text" name="login" id="login" class="form__field" placeholder="Introduzca el nombre de usuario">
+            </p>
+            <br>
+            <p class="d-grid gap-3">
+                <button type="submit" name="submit" class="btn btn-primary btn-block">Comprobar disponibilidad</button>
+            </p>
+        </form>
+    </div>
+    <script src="./ej_ajax.js"></script>
+</body>
+</html>
