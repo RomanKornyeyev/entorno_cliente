@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <style>
+        *{margin:0; padding:0; box-sizing: border-box;}
+        body{background-color: #eaeaea; display: flex; justify-content: center; align-items: center; min-height: 100vh;}
+        form{display: flex; flex-flow: column; gap: 10px; width: 400px; padding: 25px; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75); background-color: #ffffff; border-radius: 5px;}
+        input[type=text]{width: 75%;}
+        .campo{width: 100%; display: flex; justify-content: flex-end; gap: 10px;}
+        .botones{width: 100%; display: flex; justify-content: space-between; }
+    </style>
+</head>
+<body>
+    <form action="" method="post">
+        <div class="campo">
+            <label for="nombre">Nombre: </label>
+            <input type="text" name="nombre" id="nombre">
+        </div>
+
+        <div class="campo">
+            <label for="apellido">Apellido: </label>
+            <input type="text" name="apellido" id="apellido">
+        </div>
+        
+        <div class="campo">
+            <label for="dni">DNI: </label>
+            <input type="text" name="dni" id="dni">
+        </div>
+
+        <div class="campo">
+            <label for="estudios">Estudios: </label>
+            <input type="text" name="estudios" id="estudios">
+        </div>
+
+        <div class="botones">
+            <input type="button" value="Añadir usuario" onclick="añadir()">
+            <input type="button" value="Eliminar usuario" onclick="borrar()">
+        </div>
+    </form>
+
+    <script>
+        let nombre;
+        let apellidos;
+        let dni;
+        let estudios;
+        let usuario;
+        
+        var bd;
+        iniciar();
+
+        function iniciar () {
+            var request = indexedDB.open('mibasededatos', 1);
+            request.onsuccess = function(e){
+                bd = e.target.result;
+                console.log('Conexión establecida con éxito.'+request.result);
+            };
+
+            request.onerror = function() {
+                console.error("Error al crear la base de datos.", request.error);
+            };
+
+            request.onupgradeneeded = function(e){
+                console.log('El cliente no tiene la base de datos. Se inicializa.')
+                bd = e.target.result;
+                let bbddUsuarios = bd.createObjectStore('usuarios', {autoIncrement: true});
+                
+                //Creamos el index para realizar busquedas/borrados personalizadas
+                let indexNombre = bbddUsuarios.createIndex('dni', 'dni');
+            };
+        }
+
+        function añadir () {
+            nombre = document.querySelector('#nombre').value;
+            apellidos = document.querySelector('#apellido').value;
+            dni = document.querySelector('#dni').value;
+            estudios = document.querySelector('#estudios').value;
+            
+            //Creamos una variable con los datos deseados.
+            usuario = {
+                "nombre": nombre,
+                "apellidos": apellidos,
+                "dni": dni,
+                "estudios": estudios
+            }
+
+            //Creamos una transacción diciendo que usaremos el almacen de objetos usuarios y que su acceso será de lectura y escritura
+            let usuarios = bd.transaction('usuarios', 'readwrite').objectStore('usuarios');
+
+            //Creamos una petición para añadir el elemento creado anteriormente en nuestro almacén.
+            let request = usuarios.add(usuario);
+            console.log('añadido');
+            
+            //Si la petición fue exitosa se ejecuta el evento onsuccess.
+            request.onsuccess = function() {
+                alert("Usuario agregado a la BD usuarios");
+            };
+
+            //Si la petición falló, se ejecuta el evento onerror. 
+            request.onerror = function() {
+                console.log("Error", request.error);
+            };
+
+            request.oncomplete = function() {
+                console.log("Transacción completa");
+            };
+        }
+
+        function borrar () {
+            let busqueda = document.querySelector('#dni').value;
+            const bbddUsuarios = bd.transaction('usuarios', 'readwrite').objectStore('usuarios');
+
+            const index = bbddUsuarios.index('dni');
+            let resultado = index.getKey(busqueda);
+            
+            resultado.onsuccess = (e) => {
+                bbddUsuarios.delete(resultado.result);
+                alert('Usuario borrado');
+                console.log('Usuario borrado');
+            }
+        }
+    </script>
+</body>
+</html>
