@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revision de usuarios</title>
+    <style>
+        h2{
+            text-align: center;
+        }
+        input{
+            cursor: pointer;
+        }
+        #contenedor-principal{
+            margin: 30px auto;
+            width: 522px;
+            height: auto;
+        }
+        #enunciado{
+            margin: 0px auto;
+            width: 664px;
+            height: auto;
+        }
+        
+    </style>
+</head>
+<body>
+    <!-- Esta sección hace referencia al enunciado de la actividad --> 
+    <div id="enunciado">
+        <h2>Comprobar disponibilidad de usuarios</h2>
+        <h4>
+            Validar si un login se encuentra disponible o no empleando AJAX y la página web que se proporciona:
+        </h4>
+        <li>
+            Crear un script que compruebe con AJAX si el nombre escogido por el usuario está libre o no.
+        </li>
+        <li>
+            El script del servidor se llama compruebaDisponibilidad.php y el parámetro que contiene el nombre <br> se llama login.
+        </li>
+        <li>
+            La respuesta del servidor es "sí" o "no", en función de si el nombre de usuario está libre y se puede <br> utilizar o ya ha sido ocupado por otro usuario.
+        </li>
+    </div>
+    <!-- Fin de la seccion del enunciado -->
+
+    <!-- Esta sección hace referencia al formulario de comprobación de disponibilidad de usuario -->
+    <div id="contenedor-principal">
+        <fieldset>
+            <h1>Comprobar disponibilidad del login</h1>
+            <form id="formulario-disponibilidad-login">
+                <label for="campo-usuario">Nombre de usuario:</label>
+                <input type="text" name="usuario" id="campo-usuario" placeholder="">
+                <input type="submit" value="Comprobar disponibilidad" id="comprobar">
+            </form>
+        </fieldset>
+    </div>
+    <!-- Fin de la seccion del comprobación de disponibilidad -->
+
+</body>
+
+<!-- Código JS para realizar la comprobación -->
+    <script>
+        'use strict';
+        // constante para almacenar el formulario
+        const formulario = document.getElementById('formulario-disponibilidad-login');
+        // Le añadimos un event listener al formulario, de forma que cuando se envíe
+        // se ejecute el evento submit y con él, la función ajaxPHP encargada de ralizar la petición al servidor
+        formulario.addEventListener('submit', ajaxPHP); // Puesta en práctica de lo detallado anteriormente
+
+        // Desarrollo de la funcion ajaxPHP, encargada de ralizar la solicitud al servidor
+        function ajaxPHP (evento){ // Recibe el evento como parámetro
+            evento.preventDefault(); // Deshacemos las acciones por defecto del evento
+            
+            // El siguiente comentario hace referencia a la variable nombreUsuario
+            // la cual almacena el valor del input con el nombre de usuario
+            let nombreUsuario = document.getElementById('campo-usuario').value;
+            
+            // Realizamos una peticion al servidor PHP 
+            fetch('compruebaDisponibilidad.php',{
+                method: 'POST', // Especificamos el método, en este caso POST
+                body: new FormData(formulario) // Mandamos el formulario en el cuerpo de la petición
+                                               // algo característico en solicitudes de tipo POST
+            })
+            .then(respuesta => respuesta.json()) // Se recoge la respuesta, se rescata el JSON y se devuelve
+            .then(dato => { // dato almacena el JSON anteriormente devuelto
+                alert(dato); // Devolvemos la información obtenida en un panel, una alerta
+                formulario.reset(); // Reiniciamos el formulario
+            })
+        }
+    </script>
+    <!-- Fin de la seccion de codigo JS -->
+
+</html>
