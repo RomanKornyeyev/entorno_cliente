@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin:0; padding:0; box-sizing: border-box; text-align: center;}
+        body{background-color: #f7f7f7; min-height: 100vh; display: flex; justify-content: center; align-items: center;}
+        .main{width: 500px; min-height: 500px; background-color: #eaeaea;}
+        #generados{margin-top: 25px; display: flex; flex-flow: column;}
+    </style>
+</head>
+<body>
+    <main class="main" id="main">
+        <h1>Ejercicio DOM 2</h1><hr><br>
+        <label for="num">Número de checkboxes a generar</label><br>
+        <input type="number" name="num" id="num" min="1" max="100">
+        <input type="button" value="Generar checkbox" onclick="generar()">
+        <div id="generados"></div>
+    </main>
+    <script>
+        let generados = document.querySelector("#generados");
+
+        function generar(){
+            generados.innerHTML = "";
+            let num = document.querySelector("#num").value;
+            for (let i = 0; i <= num; i++) {
+                let checkbox = document.createElement('input');
+                checkbox.setAttribute('type', 'checkbox');
+                checkbox.setAttribute('id', 'ch'+i);
+
+                let label = document.createElement('label');
+                label.setAttribute('for', 'ch'+i);
+                label.appendChild(checkbox);
+
+                let numero = document.createTextNode(" "+(Math.random()*11).toFixed(2));
+                label.appendChild(numero);
+                generados.appendChild(label);
+                label.style.backgroundColor="rgba("+(Math.random()*256)+230+", "+(Math.random()*256)+230+", "+(Math.random()*256)+230+",0.2)";
+                label.style.padding="5px";
+            }
+        }
+    </script>
+</body>
+</html>
