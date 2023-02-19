@@ -9,51 +9,35 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 3px;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f7f7f7;
         }
         .contenedor {
-            width: 60%;
-            margin: 0 auto;
+            width: 700px;
+            background-color: #eaeaea;
         }
-
-        h1 {
-            background-color: rgb(225, 255, 217);
-            text-align: center;
-            font-size:1.1rem;
-            padding: 2%;
-        }
-        form {
-            background-color: rgb(255, 252, 217);
-        }
+        h1 {text-align: center;}
         .campos {
             width: 50%;
             display: flex;
             flex-direction: column;
             margin: 0 auto;
         }
-        .campos>* {
+        .campos>*{
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
         }
-        .opciones, .resultados {
-            background-color: rgb(225, 255, 217);
-            text-align: center;
-        }
-        input[type="button"] {
-            border: none;
-            padding: 2%;
-            background-color: rgb(195, 255, 169);
-            border-radius: 10px;
-            border:2px solid #8af26d;
-        }
-        input[type="button"]:hover {
-            background-color: #a6ff8b;
-        }
-        .campos, .opciones, .resultados>p {
-            padding: 2%;
-        }
+        form{margin-bottom: 15px;}
+        #resultados{display: flex; justify-content: center; align-items: center;}
     </style>
     <title>Formulario</title>
 </head>
@@ -66,8 +50,8 @@
                     <input type="text" name="nombre" id="nombre">
                 </label>
                 
-                <label for="apellidos">Apellido:
-                    <input type="text" name="apellidos" id="apellidos">
+                <label for="apellido">Apellido:
+                    <input type="text" name="apellido" id="apellido">
                 </label>
                     
                 <label for="dni">DNI:
@@ -96,15 +80,25 @@
                 <button id="btnBorrar" name="borrar" value="Borrar">Borrar de la bbdd</button>
             </div>
         </form>
+
+        <form action="procesar_datos.php" method="post" id="form_consultar">
+            <input type="hidden" name="consultar">
+            <div class="opciones">
+                <button id="btnConsultar" name="consultar" value="consultar">consultar de la bbdd</button>
+            </div>
+        </form>
         
-        <div class="resultados"></div>
+        <div id="resultados"></div>
     </div>
     
     <script>        
         const formInsertar = document.querySelector('#form_insertar');
         const formBorrar = document.querySelector('#form_borrar');
+        const formConsultar = document.querySelector('#form_consultar');
         const btnInsertar = document.querySelector('#btnInsertar');
         const btnBorrar = document.querySelector('#btnBorrar');
+        const btnConsultar = document.querySelector('#btnConsultar');
+        const resultados = document.querySelector('#resultados');
 
         btnInsertar.addEventListener('click', function (event) {
             //Para que no nos lleve a otro lado cuando damos a enviar.
@@ -128,6 +122,17 @@
             postData(formattedFormData);
         })
 
+        btnConsultar.addEventListener('click', function (event) {
+            //Para que no nos lleve a otro lado cuando damos a enviar.
+            event.preventDefault();
+            
+            //usamos FormData para formatear los datos del formulario a algo que se pueda procesar (x-www-form-urlencoded o multipart/form-data) en PHP
+            const formattedFormData = new FormData(formConsultar);
+            
+            //pasamos los datos formateados a una funcion que los procesará
+            postData(formattedFormData);
+        })
+
         async function postData(formattedFormData){
             // en fetch especificamos el archivo php que captura los datos enviados
             const response = await fetch('procesar_datos.php',{
@@ -140,7 +145,8 @@
             // data contendra la respuesta del servidor
             const data = await response.text();
             // y la mostramos en un alert
-            alert(data);
+            //alert(data);
+            resultados.innerHTML = "<table>"+data+"</table>";
         }
 
     </script>
