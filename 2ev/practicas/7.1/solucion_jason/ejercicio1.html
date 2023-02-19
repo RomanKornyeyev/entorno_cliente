@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async</title>
+</head>
+<body>
+
+    <main>
+        <h3>Comprobar disponibilidad del login</h3>
+        <div class="form">
+            <label>Nombre de usuario:</label>
+            <input type="text" name="user" id="user">
+            <button class="login">Comprobar disponibilidad</button>
+        </div>
+    </main>
+
+    <script>
+        const login = document.querySelector('.login')
+        const form = document.querySelector('.form')
+
+        login.addEventListener('click', async () => {
+            let username = document.querySelector('#user').value
+
+            let users = await fetchDB()
+
+            const div = document.createElement('div')
+            div.classList.add('solucion')
+
+            form.nextSibling.remove()
+
+            let available = false
+
+            for (const user of users) {
+                if (user.user == username) {
+                    available = true
+                }
+            }
+
+            if (available) {
+                div.innerText = `El usuario ${username} se encuentra en nuestra base de datos`
+            } else {
+                div.innerText = `El usuario ${username} NO se encuentra en nuestra base de datos`
+                console.log("no disponible");
+            }
+
+            form.parentNode.appendChild(div)
+        })
+
+        async function fetchDB() {
+            return await fetch('json.php')
+            .then(response => response.json())
+        }
+    </script>
+</body>
+</html>
