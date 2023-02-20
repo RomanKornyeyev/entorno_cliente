@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de usuarios</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            outline: none;
+            background-color: papayawhip;
+        }
+        #general{
+            /* display: flex;
+            flex-wrap: */
+            width: 80%;
+            min-height: 300px;
+            justify-content: center;
+            
+            
+        }
+        .tabla{
+            padding-top: 3%;
+            border-collapse: collapse;
+            justify-content: center;
+            background-color: white;
+        }
+
+
+        th,td{
+            border-top: 1px solid black;
+            padding: 0 5px;
+            min-width: 111px;
+            height: 44px;
+            text-align: center;
+            font-size: 20px;
+        }
+        .formula{
+            width: 100%;
+            padding-top: 3%;
+            background-color: white;
+        }
+        .cuerpo{
+            width: 100%;
+            padding-top: 3%;
+            text-align: center;
+            /* background-color: white; */
+        }
+
+        .cuerpo > th{
+            text-align: center;
+        }
+        #regular{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #regular > div{
+            min-width: 77%;
+            height: 45px;
+            margin: 10px 0;
+        }
+        #regular > div > input {
+            padding: 0 15px;
+            width: calc(100% - 32px);
+            height: 100%;
+            font-size: 20px;
+        }
+        #registrar{
+            margin-top: 10px;
+            width: 100% !important;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        table{
+            text-align: center;
+        }
+   
+        button{
+            background-color: red;
+            color: white;
+            width: fit-content;
+            padding: 5px 8px;
+            height: auto;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: .6s;
+            border-radius: 2px;
+        }
+        button:hover{
+            background-color: red;
+            color: white;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="general">
+
+        <div id="formula" class="cuerpo">
+            <form id="regular">
+                <div>
+                    <h3 class>Registro de usuarios</h3>
+                </div>
+                <div>
+                    <input type="text" name="nombre" id="nombre" placeholder="nombre">
+                </div>
+                <div>
+                    <input type="text" name="apellidos" id="apellidos" placeholder="apellidos">
+                </div>
+                <div>
+                    <input type="text" name="dni" id="dni" placeholder="DNI">
+                </div>
+                <div>
+                    <input type="text" name="estudios" id="estudios" placeholder="Estudios">
+                </div>
+                <div>
+                    <input type="submit" value="registrar" name="registrar" id="registrar">
+                </div>
+            </form>
+        </div>
+
+        <div id="usado" class="cuerpo">
+            <div>
+                <h3>Usuarios registrados</h3>
+            </div>
+            <table class="tabla">
+                <thead>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>DNI</th>
+                    <th>Estudios</th>
+                    <th>Borrado</th>
+                </thead>
+                <tbody id="cosa"></tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+
+    const formula =  document.getElementById('formula'),
+          cosa = document.getElementById('cosa'),
+          regular = document.getElementById('regular');
+        
+    regular.addEventListener('submit', registrar);
+
+    function registrar(e){
+        e.preventDefault();
+        fetch('registroUsuarios.php',{
+            method: 'POST',
+            body: new FormData(regular)
+        })
+        .then(res => 
+            res.json())
+        .then(resultado => {
+            alert(resultado);
+            usuarios();
+        });
+    }
+    
+    function eliminar(id){
+
+        if(window.confirm('¿Eliminar el usuario?')){
+           
+            let url = 'eliminar.php?id=';
+            let http = new XMLHttpRequest();
+            http.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    if(this.responseText){
+                        alert('usuario eliminado');
+                    }
+                    usuarios();
+                }
+            }
+            http.open('GET',url+id);
+            http.send();
+        }
+        
+    }
+
+    function usuarios(){
+        fetch('usuarios.php')
+        .then(res => res.json())
+        .then(usuarios => {
+            if(usuarios.length > 0){
+                let datos = "";
+                usuarios.forEach(usuario => {
+                    datos+=`<tr>
+                        <td>${usuario.nombre}</td>
+                        <td>${usuario.apellidos}</td>
+                        <td>${usuario.dni}</td>
+                        <td>${usuario.estudios}</td>
+                        <td><button class='delete' id=button-id-'${usuario.id}' onclick='eliminar(${usuario.id})'>Eliminar</button></td>
+                        </tr>
+                    `;
+                });
+                cosa.innerHTML = datos;
+            }else cosa.innerHTML = "<td colspan='5'>Sin registros</td>";
+        });
+        regular.reset();
+    }
+    usuarios();
+
+</script>
+</html>
