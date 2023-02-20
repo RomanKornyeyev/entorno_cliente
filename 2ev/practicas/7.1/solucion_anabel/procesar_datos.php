@@ -6,7 +6,8 @@ try {
     $dsn = "mysql:host=localhost;dbname=$dbname";
     
     $options = array(
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
     );
     $dbh = new PDO($dsn, $user, $password);
 
@@ -32,9 +33,9 @@ if(isset($_POST['insertar'])) {
         ':dni'=>$dni,
         ':estudios'=>$estudios,
         ])) {
-        echo 'Insercción realizada!!!!!';
+        echo '<p>Insercción realizada!!!!!</p>';
     } else {
-        echo 'Insercción fallida :(';
+        echo '<p>Insercción fallida :(</p>';
     }
 }
 
@@ -48,8 +49,32 @@ if(isset($_POST['borrar'])) {
     if ($stmt->execute([
         ':dni'=>$dni
         ])) {
-        echo 'Borrado realizado!!!!!';
+        echo '<p>Borrado realizado!!!!!</p>';
     } else {
-        echo 'Borrado fallido :(';
+        echo '<p>Borrado fallido :(</p>';
+    }
+}
+
+if(isset($_POST['seleccionar'])) {
+    $stmt = $dbh->prepare("SELECT * FROM usuarios");
+
+    //Aqui ejecutas para pegar los valores en la sentencia
+    if ($stmt->execute()) {
+        $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo "<table>";
+        echo "<tr><th>Nombre</th><th>Apellidos</th><th>DNI</th><th>Estudios</th></tr>";
+        foreach ($users as $key => $fila) {
+            echo "<tr>";
+            foreach ($fila as $key => $value) {
+                if($key != 'id') {
+                    echo "<td>".ucfirst($value)."</td>";
+                }
+            }
+            echo "</tr>";
+        }
+        echo "</table>";
+
+    } else {
+        echo 'Resultados no recuperados :(';
     }
 }

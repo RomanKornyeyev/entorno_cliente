@@ -12,7 +12,7 @@
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         }
         .contenedor {
-            width: 60%;
+            width: 70%;
             margin: 0 auto;
         }
 
@@ -41,14 +41,23 @@
             background-color: rgb(225, 255, 217);
             text-align: center;
         }
-        input[type="button"] {
+        .resultados > table, th, td {
+            padding:1rem;
+            border-collapse: collapse;
+            border:1px solid;
+            margin: 0 auto;
+        }
+        th {
+            background-color: rgb(195, 255, 169);
+        }
+        button {
             border: none;
             padding: 2%;
             background-color: rgb(195, 255, 169);
             border-radius: 10px;
             border:2px solid #8af26d;
         }
-        input[type="button"]:hover {
+        button:hover {
             background-color: #a6ff8b;
         }
         .campos, .opciones, .resultados>p {
@@ -60,6 +69,7 @@
 <body>
     <div class="contenedor">
         <h1>Introduce los datos del usuario: </h1>
+        
         <form action="procesar_datos.php" method="post" id="form_insertar">
             <div class="campos">
                 <label for="nombre">Nombre:
@@ -80,7 +90,7 @@
 
             <input type="hidden" name="insertar">
             <div class="opciones">
-                <button id="btnInsertar" name="insertar" value="Insertar">Insertar a la bbdd</button>
+                <button id="btnInsertar" name="insertar" value="Insertar"  class="btn insertar">Insertar a la bbdd</button>
             </div>
         </form>
 
@@ -93,41 +103,37 @@
 
             <input type="hidden" name="borrar">
             <div class="opciones">
-                <button id="btnBorrar" name="borrar" value="Borrar">Borrar de la bbdd</button>
+                <button id="btnBorrar" name="borrar" value="Borrar"  class="btn borrar">Borrar de la bbdd</button>
+            </div>
+        </form>
+
+        <form action="procesar_datos.php" method="post" id="form_seleccionar">
+            <input type="hidden" name="seleccionar">
+            <div class="opciones">
+                <button id="btnSeleccionar" name="seleccionar" value="Seleccionar" class="btn seleccionar">Seleccionar todos los datos de la bbdd</button>
             </div>
         </form>
         
         <div class="resultados"></div>
     </div>
     
-    <script>        
-        const formInsertar = document.querySelector('#form_insertar');
-        const formBorrar = document.querySelector('#form_borrar');
-        const btnInsertar = document.querySelector('#btnInsertar');
-        const btnBorrar = document.querySelector('#btnBorrar');
+    <script>
+        let resultados = document.querySelector('.resultados');
+        
+        const btn = document.querySelectorAll('.btn');
+        btn.forEach(element => {
+                element.addEventListener('click', function (event) {
+                //Para que no nos lleve a otro lado cuando damos a enviar.
+                event.preventDefault();
 
-        btnInsertar.addEventListener('click', function (event) {
-            //Para que no nos lleve a otro lado cuando damos a enviar.
-            event.preventDefault();
-            
-            //usamos FormData para formatear los datos del formulario a algo que se pueda procesar (x-www-form-urlencoded o multipart/form-data) en PHP
-            const formattedFormData = new FormData(formInsertar);
-            
-            //pasamos los datos formateados a una funcion que los procesará
-            postData(formattedFormData);
-        })
-
-        btnBorrar.addEventListener('click', function (event) {
-            //Para que no nos lleve a otro lado cuando damos a enviar.
-            event.preventDefault();
-            
-            //usamos FormData para formatear los datos del formulario a algo que se pueda procesar (x-www-form-urlencoded o multipart/form-data) en PHP
-            const formattedFormData = new FormData(formBorrar);
-            
-            //pasamos los datos formateados a una funcion que los procesará
-            postData(formattedFormData);
-        })
-
+                //usamos FormData para formatear los datos del formulario a algo que se pueda procesar (x-www-form-urlencoded o multipart/form-data) en PHP
+                const formattedFormData = new FormData(document.querySelector('#form_'+element.className.replace("btn ", "")));
+                
+                //pasamos los datos formateados a una funcion que los procesará
+                postData(formattedFormData);
+            })
+        });
+        
         async function postData(formattedFormData){
             // en fetch especificamos el archivo php que captura los datos enviados
             const response = await fetch('procesar_datos.php',{
@@ -140,7 +146,7 @@
             // data contendra la respuesta del servidor
             const data = await response.text();
             // y la mostramos en un alert
-            alert(data);
+            resultados.innerHTML = data;
         }
 
     </script>
