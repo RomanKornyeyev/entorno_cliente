@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: center;
+            padding: 3px;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f7f7f7;
+        }
+        .contenedor {
+            width: 700px;
+            background-color: #eaeaea;
+        }
+        h1 {text-align: center;}
+        .campos {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+        }
+        .campos>*{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        form{margin-bottom: 15px;}
+        #resultados{display: flex; justify-content: center; align-items: center;}
+    </style>
+    <title>Ejercicio 4 - Román Kornyeyev</title>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Logos </h1>
+        <form action="procesar_datos.php" method="post" id="form_deportes">
+            <input type="hidden" name="deportes">
+            <div class="opciones">
+                <button id="btnDeportes" name="deportes" value="deportes">deportes</button>
+            </div>
+        </form>
+
+        <form action="procesar_datos.php" method="post" id="form_bebidas">
+            <input type="hidden" name="bebidas">
+            <div class="opciones">
+                <button id="btnBebidas" name="bebidas" value="bebidas">bebidas</button>
+            </div>
+        </form>
+
+        <form action="procesar_datos.php" method="post" id="form_revistas">
+            <input type="hidden" name="revistas">
+            <div class="opciones">
+                <button id="btnRevistas" name="revistas" value="revistas">revistas</button>
+            </div>
+        </form>
+        
+        <div id="resultados">
+            <img id="logo" src="" alt="">
+        </div>
+    </div>
+    
+    <script>        
+        const formDeportes = document.querySelector('#form_deportes');
+        const formBebidas = document.querySelector('#form_bebidas');
+        const formRevistas = document.querySelector('#form_revistas');
+        const btnDeportes = document.querySelector('#btnDeportes');
+        const btnBebidas = document.querySelector('#btnBebidas');
+        const btnRevistas = document.querySelector('#btnRevistas');
+
+        const logoImg = document.getElementById("logo");
+
+        btnDeportes.addEventListener('click', function (event) {
+            //Para que no nos lleve a otro lado cuando damos a enviar.
+            event.preventDefault();
+            
+            //usamos FormData para formatear los datos del formulario a algo que se pueda procesar (x-www-form-urlencoded o multipart/form-data) en PHP
+            const formattedFormData = new FormData(formDeportes);
+            
+            //pasamos los datos formateados a una funcion que los procesará
+            postData(formattedFormData);
+        })
+
+        btnBebidas.addEventListener('click', function (event) {
+            event.preventDefault();
+            const formattedFormData = new FormData(formBebidas);
+            postData(formattedFormData);
+        })
+
+        btnRevistas.addEventListener('click', function (event) {
+            event.preventDefault();
+            const formattedFormData = new FormData(formRevistas);
+            postData(formattedFormData);
+        })
+
+        async function postData(formattedFormData){
+            // en fetch especificamos el archivo php que captura los datos enviados
+            const response = await fetch('procesar_datos.php',{
+                // el metodo a usar
+                method: 'POST',
+                // los datos a ser enviados
+                body: formattedFormData
+            });
+        
+            // data contendra la respuesta del servidor
+            const data = await response.text();
+            // cambiamos la url de la imagen
+            logoImg.src = data;
+        }
+
+    </script>
+</body>
+</html>

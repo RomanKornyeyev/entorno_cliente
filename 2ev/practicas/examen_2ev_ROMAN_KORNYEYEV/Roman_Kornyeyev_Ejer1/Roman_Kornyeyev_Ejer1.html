@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Román Kornyeyev</title>
+</head>
+<body>
+    <main class="main">
+        ¿Mi deporte favorito? <input type="text" name="deporte" id="deporte"><br>
+        ¿Mi película favorita? <input type="text" name="pelicula" id="pelicula"><br>
+        <button onclick="mostrar()">Aceptar aficiones</button><br>
+        <div id="resultado"></div>
+    </main>
+    <script>
+        let resultado = document.getElementById('resultado');
+        let deporte = document.getElementById('deporte');
+        let pelicula = document.getElementById('pelicula');
+
+        function mostrar(){
+            resultado.innerHTML = `
+                <h1>Mis aficiones ... </h1>
+                <h3 style='color: green;'>¿Mi deporte favorito?</h3>
+                <p style='color: blue;'>${deporte.value}</p>
+                <h3 style='color: red;'>¿Mi película favorita?</h3>
+                <p style='color: red;'>${pelicula.value}</p>
+            `;
+        }
+    </script>
+</body>
+</html>

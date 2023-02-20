@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 - Román Kornyeyev</title>
+</head>
+<body>
+    <h1>Insertar números aleatorios en la lista</h1>
+    <button id="insertar-aleatorio">InsertarAleatorio</button>
+    <ul id="lista"></ul>
+    <script >
+        const lista = document.getElementById("lista");
+        const btnInsertarAleatorio = document.getElementById("insertar-aleatorio");
+
+        // Añadir elementos iniciales
+        const elementosIniciales = ['Primer Elemento', 'Segundo Elemento'];
+        for (let i = 0; i < elementosIniciales.length; i++) {
+            const li = document.createElement("li");
+            li.textContent = elementosIniciales[i];
+            lista.appendChild(li);
+        }
+
+        // Añadir num aleatorio
+        function insertarAleatorio() {
+            const li = document.createElement("li");
+            li.textContent = "Nuevo elemento: "+Math.floor(Math.random() * 100); // Num aleatorio entre 0 y 99 (directamente redondeado)
+            lista.appendChild(li);
+        }
+
+        // Evento de insertar
+        btnInsertarAleatorio.addEventListener("click", insertarAleatorio);
+    </script>
+</body>
+</html>
