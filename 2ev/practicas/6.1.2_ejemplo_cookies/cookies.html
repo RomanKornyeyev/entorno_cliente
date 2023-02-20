@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{background-color: #eaeaea; display: flex; justify-content: center; align-items: center; width: 100vw; min-height: 100vh;}
+        .main{padding: 25px; width: 500px; min-height: 250px; display: flex; flex-flow: column; justify-content: center;align-items: center; gap: 25px; background-color: #fff; border-radius: 15px; box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);}
+        #creacion{color: rgb(8, 146, 8);}
+        form{display: flex; flex-flow: column; gap: 15px;}
+        .red{color: red;}
+    </style>
+</head>
+<body>
+    <main class="main">
+        <form>
+            <div class="form-group">
+                <label for="nombre">Nombre cookie</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre cookie" required>
+            </div>
+            <div class="form-group">
+                <label for="valor">Valor</label>
+                <input type="text" class="form-control" id="valor" placeholder="Valor cookie" required>
+            </div>
+            <div class="form-group">
+                <label for="expiracion">Días para expirar</label>
+                <input type="number" class="form-control" id="expiracion" placeholder="Expiración" required>
+            </div>
+            <button id="crear" type="button" class="btn btn-primary">Crear cookie</button>
+        </form>
+        <div id="creacion"></div>
+
+        <form>
+            <div class="form-group">
+                <label for="nb">Nombre cookie</label>
+                <input type="text" class="form-control" id="nb" placeholder="Nombre cookie" required>
+            </div>
+            <button id="leer" type="button" class="btn btn-primary">Buscar cookie</button>
+        </form>
+        <div id="busqueda"></div>
+    </main>
+    
+    <script>
+        let nombre = document.body.querySelector("#nombre");
+        let valor = document.body.querySelector("#valor");
+        let expiracion = document.body.querySelector("#expiracion");
+        let nb = document.body.querySelector("#nb");
+
+        let crear = document.body.querySelector("#crear");
+        let leer = document.body.querySelector("#leer");
+        let creacion = document.body.querySelector("#creacion");
+        let busqueda = document.body.querySelector("#busqueda");
+
+        crear.addEventListener("click", function() {
+            if(nombre.value && valor.value && expiracion.value){ 
+                setCookie(nombre.value, valor.value, expiracion.value);
+                creacion.innerHTML = `Cookie creada!`;
+                nombre.value="";
+                valor.value="";
+                expiracion.value="";
+            }else creacion.innerHTML = `<span class="red">rellena todos los campos</span>`;
+        });
+        
+        leer.addEventListener("click", function() {
+            if(nb.value){ 
+                busqueda.innerHTML = `La cookie <b>${nb.value}</b> tiene el valor: <b>${getCookie(nb.value)}</b>`;
+                nb.value="";
+            }
+        });
+
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires="+d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+    </script>
+</body>
+</html>

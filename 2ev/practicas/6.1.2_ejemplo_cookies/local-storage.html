@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+</head>
+<body>    
+    <script>
+        // Guardar un valor en el Local Storage
+        localStorage.setItem("llave", "valor");
+
+        // Obtener un valor del Local Storage
+        let valor = localStorage.getItem("llave");
+
+        // Eliminar un valor del Local Storage
+        localStorage.removeItem("llave");
+
+        // Eliminar todos los valores del Local Storage
+        localStorage.clear();
+
+        // Almacenar una variable de sesión en LocalStorage
+        localStorage.setItem("session_id", "12345");
+
+        // Recuperar una variable de sesión de LocalStorage
+        let sessionId = localStorage.getItem("session_id");
+        console.log(sessionId); // Imprime "12345"
+    </script>
+</body>
+</html>
